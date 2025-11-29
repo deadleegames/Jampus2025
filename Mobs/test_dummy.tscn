@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://m83oagwflxl8"]
+
+[ext_resource type="Script" uid="uid://dmlg8o7ea2nq3" path="res://Mobs/test_dummy.gd" id="1_y6cxs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fyw8t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y6cxs"]
+
+[node name="TestDummy" type="CharacterBody3D"]
+script = ExtResource("1_y6cxs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.007149, 0)
+shape = SubResource("CapsuleShape3D_fyw8t")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.007149, 0)
+mesh = SubResource("CapsuleMesh_y6cxs")
+
+[node name="PatrolTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
