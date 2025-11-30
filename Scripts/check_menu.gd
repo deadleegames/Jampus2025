@@ -2,20 +2,17 @@ extends Node
 
 var IsMenuOpen: bool = true
 
-func _ready():
-	change_menu_context(true)
-
 func change_menu_context(is_menu_open: bool):
 	IsMenuOpen = is_menu_open
-	if	IsMenuOpen:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-		var player = get_tree().get_first_node_in_group('player')
-		player.set_process_input(false)
-		player.set_process_unhandled_input(false)
+	if	IsMenuOpen:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		
-		var player = get_tree().get_first_node_in_group('player')
-		player.set_process_input(true)
-		player.set_process_unhandled_input(true)
+
+	var player = get_tree().get_first_node_in_group('player')
+	if player != null:
+		set_input_mode_player(player)
+
+func set_input_mode_player(player: CharacterBody3D):
+	get_tree().paused = IsMenuOpen

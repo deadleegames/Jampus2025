@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtassukjtskqn"]
+[gd_scene load_steps=8 format=3 uid="uid://dtassukjtskqn"]
 
 [ext_resource type="PackedScene" uid="uid://u5viqeomp0x6" path="res://Player/player.tscn" id="1_ormqy"]
 [ext_resource type="PackedScene" uid="uid://m83oagwflxl8" path="res://Mobs/test_dummy.tscn" id="2_00vsl"]
+[ext_resource type="PackedScene" uid="uid://bhivxgv7xue6h" path="res://Interactables/pick_up.tscn" id="3_4k50d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ormqy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -54,3 +55,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.857061, 0, -3.895977)
 
 [node name="Point4" type="Marker3D" parent="TestDummy/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0226212, 0, -1.9574909)
+
+[node name="PickUp3" parent="." instance=ExtResource("3_4k50d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.218899, 1.4798717, 13.2091465)
+
+[node name="PickUp2" parent="." instance=ExtResource("3_4k50d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.307049, 2.7414885, 10.388315)
+
+[node name="PickUp" parent="." instance=ExtResource("3_4k50d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.3707442, 7.2801847)

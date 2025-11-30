@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y6cxs"]
 
-[node name="TestDummy" type="CharacterBody3D"]
+[node name="TestDummy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_y6cxs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -21,6 +21,6 @@ mesh = SubResource("CapsuleMesh_y6cxs")
 [node name="PatrolTimer" type="Timer" parent="."]
 
 [node name="PerceptionComponent" parent="." instance=ExtResource("2_dyfbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3949883, 0.79058313, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.225984, 1.469362, 0)
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
