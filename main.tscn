@@ -1,20 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bis7v4b4onnjq"]
+[gd_scene load_steps=7 format=3 uid="uid://bis7v4b4onnjq"]
 
 [ext_resource type="Script" uid="uid://cjdwi12unhhu6" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://dtassukjtskqn" path="res://Levels/test_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://da455na6f2i5w" path="res://UI/main_menu.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://5na4gssrcnvn" path="res://Scripts/menus.gd" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bq0p20wg67amt" path="res://Levels/level_0.tscn" id="3_272bh"]
 [ext_resource type="PackedScene" uid="uid://dl0ce770slnd3" path="res://UI/game_over.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dmhvdoi22vmd8" path="res://UI/game_win.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node3D" groups=["main"]]
 script = ExtResource("1_h2yge")
 
-[node name="TestLevel" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Level0" parent="." instance=ExtResource("3_272bh")]
+process_mode = 1
 
 [node name="Menus" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("3_1bvp3")
 
 [node name="MainMenu" parent="Menus" instance=ExtResource("2_0xm2m")]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,11 +26,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameOver" parent="Menus" instance=ExtResource("5_lquwl")]
+process_mode = 3
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameWin" parent="Menus" instance=ExtResource("6_7mycd")]
+process_mode = 3
+visible = false
 
 [node name="MainAudioPlayer" type="AudioStreamPlayer3D" parent="."]
