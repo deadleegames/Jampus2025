@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://da455na6f2i5w"]
+
+[ext_resource type="Script" uid="uid://c56if1knt8cvn" path="res://UI/main_menu.gd" id="1_p8ccj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5yyqw"]
+size = Vector2(250, 50)
+
+[node name="MainMenu" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_p8ccj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -50.0
+offset_right = 25.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartBtn" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_5yyqw")
+
+[node name="Label" type="Label" parent="VBoxContainer/StartBtn"]
+layout_mode = 0
+offset_right = 247.0
+offset_bottom = 49.0
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitBtn" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+texture_normal = SubResource("PlaceholderTexture2D_5yyqw")
+
+[node name="Label" type="Label" parent="VBoxContainer/QuitBtn"]
+layout_mode = 0
+offset_right = 247.0
+offset_bottom = 49.0
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://v8ff0f5ojvte"]
+
+[ext_resource type="Script" uid="uid://dmr8qqtn6qlh6" path="res://Components/perception_component.gd" id="1_je8bo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8wfaf"]
+radius = 0.65209913
+
+[node name="PerceptionComponent" type="Area3D"]
+script = ExtResource("1_je8bo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8wfaf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

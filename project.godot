@@ -15,6 +15,10 @@ run/main_scene="uid://bis7v4b4onnjq"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CheckMenu="*res://Scripts/check_menu.gd"
+
 [input]
 
 Move_Forward={
