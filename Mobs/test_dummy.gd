@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 const SPEED: float = 5.0
+const rotation_speed : float = TAU * 2
 
 var PatrolPoints : Array[Marker3D]
 
@@ -21,11 +22,18 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):	
+func _physics_process(delta: float) -> void:
 	if PatrolPoints.size() > 0 && $PatrolTimer.is_stopped():
 		try_set_patrol_point()
-		if	CurrentPatrolPoint != null:			
-			global_position = global_position.move_toward(CurrentPatrolPoint.global_position, SPEED * delta)
+		if	CurrentPatrolPoint != null:	
+			var desiredLoc = CurrentPatrolPoint.global_position
+
+			var direction = global_position.direction_to(desiredLoc)
+			
+			var theta = wrapf(atan2(-direction.x, -direction.z) - rotation.y + PI/2, -PI, PI)
+			rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
+
+			global_position = global_position.move_toward(desiredLoc, SPEED * delta)
 			move_and_slide()
 
 func try_set_patrol_point():

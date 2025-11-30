@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://m83oagwflxl8"]
+[gd_scene load_steps=5 format=3 uid="uid://m83oagwflxl8"]
 
 [ext_resource type="Script" uid="uid://dmlg8o7ea2nq3" path="res://Mobs/test_dummy.gd" id="1_y6cxs"]
+[ext_resource type="PackedScene" uid="uid://v8ff0f5ojvte" path="res://Components/perception_component.tscn" id="2_dyfbm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fyw8t"]
 
@@ -18,5 +19,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.007149, 0)
 mesh = SubResource("CapsuleMesh_y6cxs")
 
 [node name="PatrolTimer" type="Timer" parent="."]
+
+[node name="PerceptionComponent" parent="." instance=ExtResource("2_dyfbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3949883, 0.79058313, 0)
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

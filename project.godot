@@ -17,7 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GameState="*res://Scripts/game_state.gd"
 CheckMenu="*res://Scripts/check_menu.gd"
+
+[global_group]
+
+player=""
+main=""
 
 [input]
 

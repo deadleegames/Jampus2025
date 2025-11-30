@@ -1,6 +1,4 @@
-extends CanvasLayer
-
-
+extends Control
 
 func _on_start_btn_pressed():
 	CheckMenu.change_menu_context(false)
