@@ -21,7 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		mouseAim(event)
 		
 func mouseAim(event : InputEventMouseMotion) -> void:
-	mouseEventCount += 1
+	#mouseEventCount += 1
 	#var viewport_transform: Transform2D = get_tree().root.get_final_transform()
 	#var motion: Vector2 = event.xformed_by(viewport_transform).relative
 	var motion = event.relative

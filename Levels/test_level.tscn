@@ -54,12 +54,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.857061, 0, -3.895977)
 
 [node name="Point4" type="Marker3D" parent="TestDummy/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0226212, 0, -1.9574909)
-
-[node name="TestDummy2" parent="." instance=ExtResource("2_00vsl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.439095, 0, -2)
-
-[node name="TestDummy3" parent="." instance=ExtResource("2_00vsl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33958435, 0, -11.573849)
-
-[node name="TestDummy4" parent="." instance=ExtResource("2_00vsl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29442024, 0, 8.17783)
