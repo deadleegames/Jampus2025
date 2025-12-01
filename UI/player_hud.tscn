@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwg6odu23tffb"]
+
+[ext_resource type="Texture2D" uid="uid://de8sssbmscsvl" path="res://UI/Assets/crosshair161.png" id="1_pi8qp"]
+
+[sub_resource type="Gradient" id="Gradient_x57b6"]
+colors = PackedColorArray(0, 0, 0, 0.3882353, 0, 0, 0, 0.1882353)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pi8qp"]
+gradient = SubResource("Gradient_x57b6")
+width = 250
+height = 35
+
+[sub_resource type="Gradient" id="Gradient_5o0p8"]
+colors = PackedColorArray(0, 0.40455505, 0, 1, 0.3721148, 0.7604518, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dpci0"]
+gradient = SubResource("Gradient_5o0p8")
+width = 250
+height = 35
+
+[node name="PlayerHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 325.0
+offset_bottom = 120.0
+theme_override_constants/separation = 5
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+value = 50.0
+texture_under = SubResource("GradientTexture2D_pi8qp")
+texture_progress = SubResource("GradientTexture2D_dpci0")
+tint_over = Color(0.77925295, 0.0019144488, 0.94370335, 1)
+tint_progress = Color(1.8770993e-06, 0.6848109, 0.37219253, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.5254902)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pi8qp")
+expand_mode = 1

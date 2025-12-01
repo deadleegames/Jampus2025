@@ -1,21 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://u5viqeomp0x6"]
+[gd_scene load_steps=7 format=3 uid="uid://u5viqeomp0x6"]
 
 [ext_resource type="Script" uid="uid://xvl0nljpwpqt" path="res://Player/player.gd" id="1_l8h54"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
+[ext_resource type="PackedScene" uid="uid://dhsk53tfwlber" path="res://Player/hand_puppet_test.tscn" id="2_4ntmi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ntmi"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_4ntmi"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playerCollider", "headYaw", "headPitch", "camera") groups=["player"]]
 script = ExtResource("1_l8h54")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5030882, -0.44852418)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0181315, 0)
-mesh = SubResource("CapsuleMesh_hvfyp")
+playerCollider = NodePath("CollisionShape3D")
+headYaw = NodePath("Body")
+headPitch = NodePath("Body/Head")
+camera = NodePath("Body/Head/Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0175598, 0)
 shape = SubResource("CapsuleShape3D_l8h54")
+
+[node name="Body" type="Marker3D" parent="."]
+
+[node name="Head" type="Marker3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5031291, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Body/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13719198, -4.0888786e-05, -0.6878354)
+
+[node name="Hand_Puppet" parent="Body/Head" instance=ExtResource("2_4ntmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15172422, -0.2330041)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0181315, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_hvfyp")
+skeleton = NodePath("../..")
+
+[node name="Arrow" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.06517661, 0, 0, 0, -1.5426581e-08, 0.054372065, 0, -0.352919, -2.3766782e-09, 0, 0.19115174, -0.68149453)
+mesh = SubResource("CylinderMesh_4ntmi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow"]
+transform = Transform3D(3.6947286, 0, 0, 0, 0.99999946, -3.5527137e-15, 0, -1.1368684e-13, 2.9131067, 0, 1.4994363, 1.9073486e-06)
+mesh = SubResource("PrismMesh_4ntmi")
