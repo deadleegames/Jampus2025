@@ -11,10 +11,9 @@
 
 [sub_resource type="PrismMesh" id="PrismMesh_4ntmi"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playerCollider", "headYaw", "headPitch", "camera") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playerCollider", "headPitch", "camera") groups=["player"]]
 script = ExtResource("1_l8h54")
 playerCollider = NodePath("CollisionShape3D")
-headYaw = NodePath("Body")
 headPitch = NodePath("Body/Head")
 camera = NodePath("Body/Head/Camera3D")
 

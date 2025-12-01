@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gp12cobkiq0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_37w7g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ab4ny"]
+
+[node name="Projectile" type="Area3D"]
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_37w7g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ab4ny")
