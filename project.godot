@@ -26,6 +26,7 @@ player=""
 main=""
 enemy=""
 interactable=""
+level=""
 
 [input]
 

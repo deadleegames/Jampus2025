@@ -23,7 +23,7 @@ albedo_color = Color(0, 0.38204277, 0.16294408, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6pxs"]
 albedo_color = Color(0.9999997, 0.9240399, 0.21715108, 1)
 
-[node name="Level0" type="Node3D"]
+[node name="Level0" type="Node3D" groups=["level"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d3n4i")
@@ -202,3 +202,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.059772, 1.9073486e-06, 39.
 
 [node name="Point2" type="Marker3D" parent="Enemies/TestDummy2/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.398476, 1.9073486e-06, 39.7498)
+
+[node name="Ceilings" type="Node" parent="."]
+
+[node name="Ceiling1" type="CSGBox3D" parent="Ceilings"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.988678, 9.648191, 74.58356)
+use_collision = true
+size = Vector3(96.12654, 1.0854492, 102.47681)
+material = SubResource("StandardMaterial3D_o6pxs")

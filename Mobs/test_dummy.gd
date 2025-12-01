@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const SPEED: float = 5.0
-const rotation_speed : float = TAU * 2
+const rotation_speed : float = TAU
 
 var PatrolPoints : Array[Marker3D]
 
