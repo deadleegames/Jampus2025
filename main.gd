@@ -3,9 +3,7 @@ extends Node3D
 @onready var main_menu_ui: Control = $Menus/MainMenu
 @onready var game_over_ui: Control = $Menus/GameOver
 @onready var game_win_ui: Control = $Menus/GameWin
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var player_hud: Control = $Menus/PlayerHud
 
 func game_over():
 	hide_all()
@@ -23,7 +21,13 @@ func restart_game():
 	main_menu_ui.visible = true
 	CheckMenu.change_menu_context(true)
 
+func start_game():
+	hide_all()
+	CheckMenu.change_menu_context(false)
+	player_hud.visible = true
+
 func hide_all():
 	main_menu_ui.visible = false
 	game_over_ui.visible = false
 	game_win_ui.visible = false
+	player_hud.visible = false

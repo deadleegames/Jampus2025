@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-class_name Player_Character
+#class_name Player_Character
 
 @export var mouse_sensitivity : float = 1
 
