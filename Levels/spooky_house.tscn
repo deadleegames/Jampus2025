@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://q3c281rkgxp8"]
+
+[ext_resource type="PackedScene" uid="uid://m83oagwflxl8" path="res://Mobs/test_dummy.tscn" id="1_o372j"]
+
+[node name="SpookyHouse" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="Box_Firstfloor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000038, 2, 0.10000038)
+size = Vector3(16.2, 5, 20.2)
+
+[node name="Cut_Firstfloor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099999905, 2.25, 0.09999943)
+operation = 2
+size = Vector3(15.8, 4.5, 19.800001)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.678412, 1.1500001, 0)
+operation = 2
+size = Vector3(1, 2.3, 2)
+
+[node name="TestDummy" parent="." instance=ExtResource("1_o372j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8010077, 0, -7.1352506)
