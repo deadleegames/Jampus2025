@@ -13,6 +13,7 @@ process_mode = 3
 script = ExtResource("1_h2yge")
 
 [node name="SpookyHouse" parent="." groups=["level"] instance=ExtResource("7_272bh")]
+process_mode = 1
 
 [node name="Menus" type="CanvasLayer" parent="."]
 process_mode = 3

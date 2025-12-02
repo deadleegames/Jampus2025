@@ -35,8 +35,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13719198, -4.0888786e-05, -
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.47033685)
 target_position = Vector3(0, -100, 0)
 collide_with_areas = true
-collide_with_bodies = false
 debug_shape_thickness = 5
+
+[node name="Marker3D" type="Marker3D" parent="Body/Head/Camera3D/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -99.99998, 4.7683716e-06)
 
 [node name="Hand_Puppet" parent="Body/Head" instance=ExtResource("2_4ntmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15172422, -0.2330041)
@@ -61,6 +63,7 @@ mesh = SubResource("PrismMesh_4ntmi")
 [node name="ActionComponent" type="Node" parent="."]
 script = ExtResource("3_gwnis")
 
-[node name="Projectile_Attack" parent="ActionComponent" node_paths=PackedStringArray("ProjectileSpawnMarker", "Ray") instance=ExtResource("4_k53q1")]
-ProjectileSpawnMarker = NodePath("../../Body/Head/Hand_Puppet/ProjectileSpawnMarker")
-Ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
+[node name="Projectile_Attack" parent="ActionComponent" node_paths=PackedStringArray("projectileSpawnMarker", "ray") instance=ExtResource("4_k53q1")]
+projectileSpawnMarker = NodePath("../../Body/Head/Hand_Puppet/ProjectileSpawnMarker")
+SPEED = 75.0
+ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
