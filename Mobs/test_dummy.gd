@@ -4,11 +4,22 @@ const SPEED: float = 5.0
 const rotation_speed : float = TAU
 
 var PatrolPoints : Array[Marker3D]
-
 var CurrentPatrolPoint : Marker3D
 var PatrolPointIterator : int = 0
-# Called when the node enters the scene tree for the first time.
+
+enum AIState { IDLE, PATROL, CHASE }
+
+var currentState : AIState
+var playerRef: CharacterBody3D
+
+
+@onready var perception_component: Area3D = $PerceptionComponent
+
 func _ready():
+	currentState = AIState.IDLE
+
+	perception_component.player_spotted.connect(on_player_spotted)
+
 	var patrol_node = get_node("PatrolPoints")
 	if patrol_node == null:
 		return
@@ -20,21 +31,36 @@ func _ready():
 			print('point ' + point.name)
 			PatrolPoints.append(point)
 
+	currentState = AIState.PATROL
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+
+	match currentState:
+		AIState.PATROL:
+			do_patrol(delta)
+
+		AIState.CHASE:
+			do_chase(delta)
+
+	move_and_slide()
+
+
+func do_chase(delta: float):
+	global_position = global_position.move_toward(playerRef.global_position, SPEED * delta)
+	calculate_lookat(playerRef.global_position, delta)
+
+func do_patrol(delta: float):
 	if PatrolPoints.size() > 0 && $PatrolTimer.is_stopped():
 		try_set_patrol_point()
 		if	CurrentPatrolPoint != null:	
 			var desiredLoc = CurrentPatrolPoint.global_position
 
-			var direction = global_position.direction_to(desiredLoc)
-			
-			var theta = wrapf(atan2(-direction.x, -direction.z) - rotation.y + PI/2, -PI, PI)
-			rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
+			calculate_lookat(desiredLoc, delta)
 
 			global_position = global_position.move_toward(desiredLoc, SPEED * delta)
-			move_and_slide()
+			
 
 func try_set_patrol_point():
 	if PatrolPoints.size() <= 0 or !$PatrolTimer.is_stopped():
@@ -56,5 +82,22 @@ func compare_x_z(v1 : Vector3, v2 : Vector3, acceptable_radius : float) -> bool:
 			return true
 	return false
 
+func calculate_lookat(lookAtLoc: Vector3, delta: float):
+	var direction = global_position.direction_to(lookAtLoc)
+			
+	var theta = wrapf(atan2(-direction.x, -direction.z) - rotation.y + PI/2, -PI, PI)
+	rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
+
+
+
+func on_player_spotted(instigator: CharacterBody3D):
+	currentState = AIState.CHASE
+	playerRef = instigator
+
 func _on_patrol_timer_timeout():
 	$PatrolTimer.stop()
+
+func _on_capture_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group('player'):
+		var main = get_tree().get_first_node_in_group('main')
+		main.game_over()

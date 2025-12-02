@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://m83oagwflxl8"]
+[gd_scene load_steps=10 format=3 uid="uid://m83oagwflxl8"]
 
 [ext_resource type="Script" uid="uid://dmlg8o7ea2nq3" path="res://Mobs/test_dummy.gd" id="1_y6cxs"]
 [ext_resource type="PackedScene" uid="uid://v8ff0f5ojvte" path="res://Components/perception_component.tscn" id="2_dyfbm"]
@@ -12,6 +12,9 @@
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_17pbn"]
 points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -0.9808144, -0.00019574165, -1, -1, -0.19518405, -1, -0.9808144, -0.382733, -1, -0.92404073, -0.5555991, -1, -0.83163667, -0.7071261, -1, -0.7071261, -0.83163667, -1, -0.5555991, -0.92404073, -1, -0.382733, -0.9808144, -1, -0.19518405, -1, -1, -0.00019574165, -0.9808144, -1, 0.19498825, -0.92404073, -1, 0.38253725, -0.83163667, -1, 0.55540323, -0.7071261, -1, 0.7069303, -0.5555991, -1, 0.8314409, -0.382733, -1, 0.92384493, -0.19518405, -1, 0.9806186, -0.00019574165, -1, 1, 0.19498825, -1, 0.9806186, 0.38253725, -1, 0.92384493, 0.55540323, -1, 0.8314409, 0.7069303, -1, 0.7069303, 0.8314409, -1, 0.55540323, 0.92384493, -1, 0.38253725, 0.9806186, -1, 0.19498825, 1, -1, -0.00019574165, 0.9806186, -1, -0.19518405, 0.92384493, -1, -0.382733, 0.8314409, -1, -0.5555991, 0.7069303, -1, -0.7071261, 0.55540323, -1, -0.83163667, 0.38253725, -1, -0.92404073)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6hm3u"]
+radius = 1.1713572
 
 [node name="TestDummy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_y6cxs")
@@ -32,6 +35,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.12662554, 0.8555268, 0.332
 
 [node name="Cone" parent="PerceptionComponent" instance=ExtResource("3_17pbn")]
 transform = Transform3D(-5.6824803e-08, -1.3, 5.6824803e-08, 0, -5.6824803e-08, -1.3, 1.3, -5.6824803e-08, 2.483891e-15, 1.5593795, -0.117467046, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PerceptionComponent"]
 transform = Transform3D(-5.6824803e-08, -1.3, 5.6824803e-08, 0, -5.6824803e-08, -1.3, 1.3, -5.6824803e-08, 2.483891e-15, 1.5593795, -0.117467046, 0)
@@ -50,4 +54,13 @@ perception_collision = NodePath("../CollisionShape3D")
 [node name="Goober" parent="." instance=ExtResource("5_1xqgp")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
+[node name="CaptureArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1376518, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CaptureArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0920358, 0)
+shape = SubResource("SphereShape3D_6hm3u")
+debug_color = Color(0.93272084, 2.3969114e-05, 0.6496301, 0.41960785)
+
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
+[connection signal="body_entered" from="CaptureArea" to="." method="_on_capture_area_body_entered"]
