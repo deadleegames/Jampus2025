@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://q3c281rkgxp8"]
+[gd_scene load_steps=7 format=3 uid="uid://q3c281rkgxp8"]
 
 [ext_resource type="PackedScene" uid="uid://m83oagwflxl8" path="res://Mobs/test_dummy.tscn" id="1_o372j"]
 [ext_resource type="PackedScene" uid="uid://k4bsund7ioav" path="res://Models/LevelGeo/FoyerStairs.glb" id="2_o0l0h"]
+[ext_resource type="PackedScene" uid="uid://u5viqeomp0x6" path="res://Player/player.tscn" id="3_g4t3k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0l0h"]
 sky_top_color = Color(0.0806789, 0.10591217, 0.1395222, 1)
@@ -23,6 +24,7 @@ glow_enabled = true
 environment = SubResource("Environment_oe4ec")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
 
 [node name="Box_Firstfloor" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000038, 2, 0.10000038)
@@ -263,3 +265,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.800686, 0, -7.1350684)
 
 [node name="FoyerStairs" parent="." instance=ExtResource("2_o0l0h")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.43367982, 0, 2.8624291)
+
+[node name="Player" parent="." instance=ExtResource("3_g4t3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7007265, 0, 17.406248)

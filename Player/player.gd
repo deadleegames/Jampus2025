@@ -2,6 +2,11 @@ extends CharacterBody3D
 
 const SPEED = 7.0
 const JUMP_VELOCITY = 4.5
+@onready var action_component: Node = $ActionComponent
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Shoot"):
+		action_component.start_action_by_name("Projectile_Attack_Action")
 
 func _physics_process(delta):
 	# Add the gravity.
