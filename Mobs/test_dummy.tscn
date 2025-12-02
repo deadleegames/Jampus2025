@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://m83oagwflxl8"]
+[gd_scene load_steps=9 format=3 uid="uid://m83oagwflxl8"]
 
 [ext_resource type="Script" uid="uid://dmlg8o7ea2nq3" path="res://Mobs/test_dummy.gd" id="1_y6cxs"]
 [ext_resource type="PackedScene" uid="uid://v8ff0f5ojvte" path="res://Components/perception_component.tscn" id="2_dyfbm"]
-[ext_resource type="PackedScene" uid="uid://bo0d5ohcwgknv" path="res://Models/Goober.blend" id="2_gn8cq"]
 [ext_resource type="PackedScene" uid="uid://dxnfpngb6k3oa" path="res://Components/cone.tscn" id="3_17pbn"]
+[ext_resource type="PackedScene" uid="uid://cdxmt6ufm6q5g" path="res://Interactables/lantern_directional.tscn" id="4_6hm3u"]
+[ext_resource type="PackedScene" uid="uid://cfp0eyewpxdww" path="res://Mobs/goober.tscn" id="5_1xqgp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fyw8t"]
 
@@ -24,25 +25,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.007149, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_y6cxs")
 
-[node name="Goober" parent="." instance=ExtResource("2_gn8cq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-
 [node name="PatrolTimer" type="Timer" parent="."]
 
 [node name="PerceptionComponent" parent="." instance=ExtResource("2_dyfbm")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.70664954, 1.2128383, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.12662554, 0.8555268, 0.33227718)
 
 [node name="Cone" parent="PerceptionComponent" instance=ExtResource("3_17pbn")]
-transform = Transform3D(-5.6824803e-08, -1.3, 5.6824803e-08, 0, -5.6824803e-08, -1.3, 1.3, -5.6824803e-08, 2.483891e-15, 1.3497814, -0.06874037, 0)
+transform = Transform3D(-5.6824803e-08, -1.3, 5.6824803e-08, 0, -5.6824803e-08, -1.3, 1.3, -5.6824803e-08, 2.483891e-15, 1.5593795, -0.117467046, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PerceptionComponent"]
-transform = Transform3D(-5.6824803e-08, -1.3, 5.6824803e-08, 0, -5.6824803e-08, -1.3, 1.3, -5.6824803e-08, 2.483891e-15, 1.3497814, -0.06874037, 0)
-visible = false
+transform = Transform3D(-5.6824803e-08, -1.3, 5.6824803e-08, 0, -5.6824803e-08, -1.3, 1.3, -5.6824803e-08, 2.483891e-15, 1.5593795, -0.117467046, 0)
 shape = SubResource("ConvexPolygonShape3D_17pbn")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="PerceptionComponent"]
-transform = Transform3D(-1.4570463e-08, 0, -0.33333334, 0, 0.33333334, 0, 0.33333334, 0, -1.4570463e-08, 0, 0, 0)
+transform = Transform3D(-1.4570463e-08, 0, -0.33333334, 0, 0.33333334, 0, 0.33333334, 0, -1.4570463e-08, 0.209598, -0.04872662, 0)
 spot_range = 8.863332
 spot_angle = 24.49535
+
+[node name="Lantern_Directional2" parent="PerceptionComponent" node_paths=PackedStringArray("spot_light", "perception_collision") instance=ExtResource("4_6hm3u")]
+transform = Transform3D(-1.7484556e-08, 0, 0.40000004, 0, 0.40000004, 0, -0.40000004, 0, -1.7484556e-08, 0.19955976, -0.19706202, 0)
+spot_light = NodePath("../SpotLight3D")
+perception_collision = NodePath("../CollisionShape3D")
+
+[node name="Goober" parent="." instance=ExtResource("5_1xqgp")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

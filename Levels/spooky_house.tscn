@@ -263,6 +263,8 @@ omni_range = 11.521858
 [node name="TestDummy" parent="." instance=ExtResource("1_o372j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.800686, 0, -7.1350684)
 
+[node name="PatrolPoints" type="Node" parent="TestDummy"]
+
 [node name="FoyerStairs" parent="." instance=ExtResource("2_o0l0h")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.43367982, 0, 2.8624291)
 
