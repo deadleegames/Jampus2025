@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crja2p4yowlge"
+path="res://.godot/imported/Sheperd_Player near01.mp3-a1b8d5d36333df37c4fb03e87325a74c.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sheperd_Player near01.mp3"
+dest_files=["res://.godot/imported/Sheperd_Player near01.mp3-a1b8d5d36333df37c4fb03e87325a74c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

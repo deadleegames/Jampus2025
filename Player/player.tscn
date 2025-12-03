@@ -54,6 +54,7 @@ skeleton = NodePath("../..")
 
 [node name="Arrow" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.06517661, 0, 0, 0, -1.5426581e-08, 0.054372065, 0, -0.352919, -2.3766782e-09, 0, 0.19115174, -0.68149453)
+visible = false
 mesh = SubResource("CylinderMesh_4ntmi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow"]

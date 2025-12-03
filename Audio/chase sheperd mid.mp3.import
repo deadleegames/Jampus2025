@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8eh3fw3obklm"
+path="res://.godot/imported/chase sheperd mid.mp3-548113ae698976aa066b1a97539f96b5.mp3str"
+
+[deps]
+
+source_file="res://Audio/chase sheperd mid.mp3"
+dest_files=["res://.godot/imported/chase sheperd mid.mp3-548113ae698976aa066b1a97539f96b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
