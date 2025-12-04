@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=5 format=3 uid="uid://n06elb3xm54k"]
+
+[ext_resource type="AudioStream" uid="uid://bvi5m1v3sdamn" path="res://Audio/Sheperd_Searching_Player.mp3" id="1_qnn8t"]
+[ext_resource type="AudioStream" uid="uid://bypuo34w58c0w" path="res://Audio/Sheperd_Searching_Player_02.mp3" id="2_kvwi0"]
+[ext_resource type="AudioStream" uid="uid://dtrum234u8not" path="res://Audio/Sheperd_Searching_Player_03.mp3" id="3_wtntx"]
+[ext_resource type="AudioStream" uid="uid://bhb0p2l1idwqf" path="res://Audio/Sheperd_Searching_Player_04.mp3" id="4_u1lpw"]
+
+[resource]
+stream_count = 4
+stream_0 = ExtResource("1_qnn8t")
+stream_1 = ExtResource("2_kvwi0")
+stream_2 = ExtResource("3_wtntx")
+stream_3 = ExtResource("4_u1lpw")

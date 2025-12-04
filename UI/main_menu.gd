@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	get_tree().paused = true
+
 func _on_start_btn_pressed():
 	var main = get_tree().get_first_node_in_group('main')
 	main.start_game()

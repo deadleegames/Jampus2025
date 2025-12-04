@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name Enemy
+
 const SPEED: float = 5.0
 const rotation_speed : float = TAU
 
@@ -7,16 +9,16 @@ var PatrolPoints : Array[Marker3D]
 var CurrentPatrolPoint : Marker3D
 var PatrolPointIterator : int = 0
 
-enum AIState { IDLE, PATROL, CHASE }
-
-var currentState : AIState
+var currentState : MyEnums.AIState
 var playerRef: CharacterBody3D
 
+signal on_state_changed(new_state: MyEnums.AIState)
 
 @onready var perception_component: Area3D = $PerceptionComponent
+@export var capture_collision: CollisionObject3D
 
 func _ready():
-	currentState = AIState.IDLE
+	currentState = MyEnums.AIState.IDLE
 
 	perception_component.player_spotted.connect(on_player_spotted)
 
@@ -31,23 +33,24 @@ func _ready():
 			print('point ' + point.name)
 			PatrolPoints.append(point)
 
-	currentState = AIState.PATROL
+	currentState = MyEnums.AIState.PATROL
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 
 	match currentState:
-		AIState.PATROL:
+		MyEnums.AIState.PATROL:
 			do_patrol(delta)
 
-		AIState.CHASE:
+		MyEnums.AIState.CHASE:
 			do_chase(delta)
 
 	move_and_slide()
 
 
 func do_chase(delta: float):
+	capture_collision.set_deferred("disabled", false)
 	global_position = global_position.move_toward(playerRef.global_position, SPEED * delta)
 	calculate_lookat(playerRef.global_position, delta)
 
@@ -88,10 +91,9 @@ func calculate_lookat(lookAtLoc: Vector3, delta: float):
 	var theta = wrapf(atan2(-direction.x, -direction.z) - rotation.y + PI/2, -PI, PI)
 	rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
 
-
-
 func on_player_spotted(instigator: CharacterBody3D):
-	currentState = AIState.CHASE
+	currentState = MyEnums.AIState.CHASE
+	on_state_changed.emit(currentState)
 	playerRef = instigator
 
 func _on_patrol_timer_timeout():

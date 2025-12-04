@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq0p20wg67amt"]
+[gd_scene load_steps=10 format=3 uid="uid://bq0p20wg67amt"]
 
 [ext_resource type="PackedScene" uid="uid://u5viqeomp0x6" path="res://Player/player.tscn" id="1_o6pxs"]
 [ext_resource type="PackedScene" uid="uid://bhivxgv7xue6h" path="res://Interactables/pick_up.tscn" id="2_d3n4i"]
 [ext_resource type="PackedScene" uid="uid://m83oagwflxl8" path="res://Mobs/test_dummy.tscn" id="3_finow"]
+[ext_resource type="PackedScene" uid="uid://bvnv13v4mej18" path="res://Mobs/sheperd.tscn" id="4_epnel"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ak04c"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,6 +25,7 @@ albedo_color = Color(0, 0.38204277, 0.16294408, 1)
 albedo_color = Color(0.9999997, 0.9240399, 0.21715108, 1)
 
 [node name="Level0" type="Node3D" groups=["level"]]
+process_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d3n4i")
@@ -35,7 +37,7 @@ size = Vector3(142.9353, 1, 130.24487)
 material = SubResource("StandardMaterial3D_d3n4i")
 
 [node name="Player" parent="." instance=ExtResource("1_o6pxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76728487, 0.9150524, 120.59354)
+transform = Transform3D(0.51396054, 0, 0.85781384, 0, 1, 0, -0.85781384, 0, 0.51396054, -0.76728487, 0.9150524, 97.72891)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.22517216, 0.974319, 0, -0.974319, -0.22517216, 0, 14.676761, 0)
@@ -183,6 +185,7 @@ height = 7.0
 
 [node name="TestDummy" parent="Enemies" instance=ExtResource("3_finow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.760142, 0.6754885, 80.18927)
+visible = false
 
 [node name="PatrolPoints" type="Node" parent="Enemies/TestDummy"]
 
@@ -194,6 +197,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7616, -1.9073486e-06, 80.
 
 [node name="TestDummy2" parent="Enemies" instance=ExtResource("3_finow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.67625, 0.6754885, 40.522728)
+visible = false
 
 [node name="PatrolPoints" type="Node" parent="Enemies/TestDummy2"]
 
@@ -203,10 +207,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.059772, 1.9073486e-06, 39.
 [node name="Point2" type="Marker3D" parent="Enemies/TestDummy2/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.398476, 1.9073486e-06, 39.7498)
 
+[node name="Sheperd" parent="Enemies" instance=ExtResource("4_epnel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.536335, 0.82806396, 94.393776)
+
+[node name="PatrolPoints" type="Node" parent="Enemies/Sheperd"]
+
+[node name="Point1" type="Marker3D" parent="Enemies/Sheperd/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.069733, 0.2024498, 100.29541)
+
+[node name="Point2" type="Marker3D" parent="Enemies/Sheperd/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7616, 0.5145159, 65.93321)
+
 [node name="Ceilings" type="Node" parent="."]
 
 [node name="Ceiling1" type="CSGBox3D" parent="Ceilings"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.988678, 9.648191, 74.58356)
+visible = false
 use_collision = true
 size = Vector3(96.12654, 1.0854492, 102.47681)
 material = SubResource("StandardMaterial3D_o6pxs")
