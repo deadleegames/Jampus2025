@@ -50,11 +50,6 @@ func _physics_process(delta):
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouseAim(event)
-	elif event.is_action_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func mouseAim(event : InputEventMouseMotion) -> void:
 	#mouseEventCount += 1

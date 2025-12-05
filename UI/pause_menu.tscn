@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://da455na6f2i5w"]
+[gd_scene load_steps=3 format=3 uid="uid://b34mpi3xhoy8p"]
 
-[ext_resource type="Script" uid="uid://c56if1knt8cvn" path="res://UI/main_menu.gd" id="1_p8ccj"]
-[ext_resource type="Theme" uid="uid://gmf2e3v8ts2k" path="res://UI/Themes/main_menu.tres" id="2_tk8dj"]
+[ext_resource type="Script" uid="uid://cjwlyhnms7hjc" path="res://UI/pause_menu.gd" id="1_jfm1e"]
+[ext_resource type="Theme" uid="uid://gmf2e3v8ts2k" path="res://UI/Themes/main_menu.tres" id="1_ltd3m"]
 
-[node name="MainMenu" type="Control"]
+[node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_p8ccj")
+script = ExtResource("1_jfm1e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6862745)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -22,23 +31,22 @@ offset_right = 250.0
 offset_bottom = 102.0
 grow_vertical = 2
 
-[node name="StartBtn" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(50, 100)
-layout_mode = 2
-theme = ExtResource("2_tk8dj")
-text = "Start
-"
-
 [node name="SettingsBtn" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
-theme = ExtResource("2_tk8dj")
+theme = ExtResource("1_ltd3m")
 text = "Settings"
+
+[node name="ReturnBtn" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+text = "Return"
 
 [node name="QuitBtn" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
-theme = ExtResource("2_tk8dj")
+theme = ExtResource("1_ltd3m")
 text = "Quit"
 
 [node name="BoxContainer" type="MarginContainer" parent="."]
@@ -54,10 +62,11 @@ grow_horizontal = 2
 
 [node name="Label" type="Label" parent="BoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_tk8dj")
+theme = ExtResource("1_ltd3m")
 theme_override_font_sizes/font_size = 50
-text = "Limb Heist"
+text = "Paused"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnBtn" to="." method="_on_return_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
