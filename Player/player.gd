@@ -4,33 +4,61 @@ class_name Player
 
 var currentState : MyEnums.PlayerState = MyEnums.PlayerState.DEFAULT
 
+var bis_grappling : bool = false
+var grapple_pos : Vector3
+
 const SPEED = 7.0
 const JUMP_VELOCITY = 4.5
+
+@export var rope: MeshInstance3D
+
 @onready var action_component: Node = $ActionComponent
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):		
 		action_component.start_action_by_name("Projectile_Attack_Action")
+	if Input.is_action_just_pressed("Interact"):		
+		action_component.start_action_by_name("Grapple_Action")
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	rope.visible = bis_grappling
+	if bis_grappling:
+		var distance_vec = global_position - grapple_pos
 
-	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		# var d = pow(distance_vec.x, 2) + pow(distance_vec.z, 2)
+		# var distance = sqrt(d)
+		# print('distance ' + str(distance))
+		# rope.global_scale(Vector3(0, distance, 0))
+		# print('rope scale ' + str(rope.global_basis.get_scale().y))
+		rope.stretch_between($Body/Head/Hand_Puppet/GrappleSpawn.global_position, grapple_pos)
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("Move_Left", "Move_Right", "Move_Forward", "Move_Backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		var additional_speed = abs(distance_vec.z) + abs(distance_vec.x)
+		#tween_scale(rope, Vector3(0, distance, 0), .5)
+
+		var direction = global_position.direction_to(grapple_pos)
+		#velocity = direction * SPEED * additional_speed
+
+		if compare_x_z(global_position, grapple_pos, 2.0):
+			bis_grappling = false
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		# Add the gravity.
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+
+		# Handle jump.
+		if Input.is_action_just_pressed("Jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var input_dir = Input.get_vector("Move_Left", "Move_Right", "Move_Forward", "Move_Backward")
+		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 
@@ -82,3 +110,13 @@ func clamp_pitch()->void:
 	
 	headPitch.rotation.x = clamp(headPitch.rotation.x, min_pitch, max_pitch)
 	headPitch.orthonormalize()
+
+func compare_x_z(v1 : Vector3, v2 : Vector3, acceptable_radius : float) -> bool:
+	if v1.x >= (v2.x - acceptable_radius) and v1.x <= (v2.x + acceptable_radius):
+		if v1.z >= (v2.z - acceptable_radius) and v1.z <= (v2.z + acceptable_radius):
+			return true
+	return false
+
+func tween_scale(target, target_scale, duration):
+	var tween = create_tween()
+	tween.tween_property(target, "scale", target_scale, duration).set_trans(Tween.TRANS_ELASTIC)

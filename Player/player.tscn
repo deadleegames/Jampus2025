@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://u5viqeomp0x6"]
+[gd_scene load_steps=11 format=3 uid="uid://u5viqeomp0x6"]
 
 [ext_resource type="Script" uid="uid://xvl0nljpwpqt" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://dhsk53tfwlber" path="res://Player/hand_puppet_test.tscn" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://dovjmsjhauevk" path="res://Components/action_component.gd" id="3_gwnis"]
 [ext_resource type="PackedScene" uid="uid://dp6fo60a8ex5l" path="res://Player/Actions/projectile_attack.tscn" id="4_k53q1"]
+[ext_resource type="PackedScene" uid="uid://bxys16a0iwwe8" path="res://Player/Actions/grapple.tscn" id="5_k53q1"]
+[ext_resource type="PackedScene" uid="uid://c7j1h3vdwhy8r" path="res://Player/Actions/simple_rope.tscn" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
@@ -13,8 +15,9 @@
 
 [sub_resource type="PrismMesh" id="PrismMesh_4ntmi"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("playerCollider", "headPitch", "camera") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("rope", "playerCollider", "headPitch", "camera") groups=["player"]]
 script = ExtResource("1_l8h54")
+rope = NodePath("Body/Head/Hand_Puppet/SimpleRope")
 playerCollider = NodePath("CollisionShape3D")
 headPitch = NodePath("Body/Head")
 camera = NodePath("Body/Head/Camera3D")
@@ -43,8 +46,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -99.99998, 4.7683716e-06)
 [node name="Hand_Puppet" parent="Body/Head" instance=ExtResource("2_4ntmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15172422, -0.2330041)
 
-[node name="ProjectileSpawnMarker" type="Marker3D" parent="Body/Head/Hand_Puppet"]
+[node name="GrappleSpawn" type="Marker3D" parent="Body/Head/Hand_Puppet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, 0, -1.2785587)
+
+[node name="ProjectileSpawnMarker" type="Marker3D" parent="Body/Head/Hand_Puppet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4931202, 0, -1.2785587)
+
+[node name="SimpleRope" parent="Body/Head/Hand_Puppet" instance=ExtResource("6_fhl08")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0181315, 0)
@@ -68,3 +76,7 @@ script = ExtResource("3_gwnis")
 projectileSpawnMarker = NodePath("../../Body/Head/Hand_Puppet/ProjectileSpawnMarker")
 SPEED = 75.0
 ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
+
+[node name="Grapple" parent="ActionComponent" node_paths=PackedStringArray("ray", "player") instance=ExtResource("5_k53q1")]
+ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
+player = NodePath("../..")

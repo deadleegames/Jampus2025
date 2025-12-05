@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7j1h3vdwhy8r"]
+
+[ext_resource type="Script" uid="uid://xhtht4gnjj22" path="res://Player/Actions/simple_rope.gd" id="1_l4864"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c3nm0"]
+
+[node name="SimpleRope" type="MeshInstance3D"]
+transform = Transform3D(0.01, 0, 0, 0, 1, 0, 0, -3.5527137e-15, 0.01, 0, 0, 0)
+mesh = SubResource("CylinderMesh_c3nm0")
+script = ExtResource("1_l4864")
