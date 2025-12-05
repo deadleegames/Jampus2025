@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+class_name Player
+
+var currentState : MyEnums.PlayerState = MyEnums.PlayerState.DEFAULT
+
 const SPEED = 7.0
 const JUMP_VELOCITY = 4.5
 @onready var action_component: Node = $ActionComponent

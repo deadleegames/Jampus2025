@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1djbs6xgrb1h"
+path="res://.godot/imported/Animation Extract i guess.mp3-d8e9d5b2bc8f00a42cebb118d729bb48.mp3str"
+
+[deps]
+
+source_file="res://Audio/Animation Extract i guess.mp3"
+dest_files=["res://.godot/imported/Animation Extract i guess.mp3-d8e9d5b2bc8f00a42cebb118d729bb48.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

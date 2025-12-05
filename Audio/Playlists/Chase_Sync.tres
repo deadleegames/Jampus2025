@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamSynchronized" load_steps=4 format=3 uid="uid://co4ha3yiqh0t7"]
+
+[ext_resource type="AudioStream" uid="uid://c7k4hl2fxn4yk" path="res://Audio/chase sheperd near.mp3" id="1_64jrc"]
+[ext_resource type="AudioStream" uid="uid://c8eh3fw3obklm" path="res://Audio/chase sheperd mid.mp3" id="2_a8ops"]
+[ext_resource type="AudioStream" uid="uid://27bmnbcbj0t4" path="res://Audio/chase sheperd far.mp3" id="3_ibkbg"]
+
+[resource]
+stream_count = 3
+stream_0/stream = ExtResource("1_64jrc")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_a8ops")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("3_ibkbg")
+stream_2/volume = 0.0

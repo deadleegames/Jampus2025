@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=3 format=3 uid="uid://o6lwgkuf5i3p"]
+
+[ext_resource type="AudioStream" uid="uid://crja2p4yowlge" path="res://Audio/Sheperd_Player near01.mp3" id="1_nugcq"]
+[ext_resource type="AudioStream" uid="uid://bl8vdvpxvlwcx" path="res://Audio/Sheperd_Player near02.mp3" id="2_crbkr"]
+
+[resource]
+stream_count = 2
+stream_0 = ExtResource("1_nugcq")
+stream_1 = ExtResource("2_crbkr")

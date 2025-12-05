@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7k4hl2fxn4yk"
+path="res://.godot/imported/chase sheperd near.mp3-da18a2f39ba61f7c2349adc358caa953.mp3str"
+
+[deps]
+
+source_file="res://Audio/chase sheperd near.mp3"
+dest_files=["res://.godot/imported/chase sheperd near.mp3-da18a2f39ba61f7c2349adc358caa953.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

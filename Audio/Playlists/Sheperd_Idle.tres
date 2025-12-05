@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=5 format=3 uid="uid://cd32xltktqy70"]
+
+[ext_resource type="AudioStream" uid="uid://bianu8hgx3hge" path="res://Audio/Sheperd_Idle_01.mp3" id="1_wy50k"]
+[ext_resource type="AudioStream" uid="uid://bskp8flsetfwi" path="res://Audio/Sheperd_Idle_02.mp3" id="2_5kldb"]
+[ext_resource type="AudioStream" uid="uid://dfwalcdtfxl66" path="res://Audio/Sheperd_Idle_03.mp3" id="3_qxr3i"]
+[ext_resource type="AudioStream" uid="uid://cm7k0ilywwakk" path="res://Audio/Sheperd_Idle_04.mp3" id="4_6vv7b"]
+
+[resource]
+shuffle = true
+fade_time = 0.63
+stream_count = 4
+stream_0 = ExtResource("1_wy50k")
+stream_1 = ExtResource("2_5kldb")
+stream_2 = ExtResource("3_qxr3i")
+stream_3 = ExtResource("4_6vv7b")

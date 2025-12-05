@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xgd5e82lvhps"
+path="res://.godot/imported/chase sheperd hide.mp3-0e565b03f8c0f5935927677a390a7ea0.mp3str"
+
+[deps]
+
+source_file="res://Audio/chase sheperd hide.mp3"
+dest_files=["res://.godot/imported/chase sheperd hide.mp3-0e565b03f8c0f5935927677a390a7ea0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
