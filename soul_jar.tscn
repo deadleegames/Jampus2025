@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://cm6vda7m67gwq"]
+
+[ext_resource type="PackedScene" uid="uid://10dwbwx1fsrs" path="res://Models/SoulJar.blend" id="1_nyb5f"]
+[ext_resource type="Texture2D" uid="uid://g8w7tb5nytp4" path="res://Models/ModelTextures/TorturedSoul3.png" id="2_amgou"]
+[ext_resource type="Texture2D" uid="uid://2g2sxlod2xyf" path="res://Models/ModelTextures/TorturedSoul2.png" id="3_amgou"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7xq8"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_amgou")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4x5l1"]
+material = SubResource("StandardMaterial3D_u7xq8")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Curve" id="Curve_4x5l1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18759455, 0.9839478), 0.0, 0.0, 0, 0, Vector2(0.8789712, 0.656024), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hj3y"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_amgou")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_fs56w"]
+material = SubResource("StandardMaterial3D_2hj3y")
+size = Vector2(0.2, 0.2)
+
+[node name="SoulJar" type="Node3D"]
+
+[node name="SoulJar_Model" parent="." instance=ExtResource("1_nyb5f")]
+
+[node name="Ballheads" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07232222, 0)
+cast_shadow = 0
+lifetime = 2.38
+mesh = SubResource("QuadMesh_4x5l1")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.04
+emission_ring_radius = 0.14
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 6.31
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.11
+initial_velocity_max = 0.79
+angular_velocity_min = -13.67
+angular_velocity_max = 12.65
+damping_min = 0.386
+damping_max = 0.876
+scale_amount_min = 0.46
+scale_amount_curve = SubResource("Curve_4x5l1")
+
+[node name="Dropheads" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018648535, 0.099898, 0.01841253)
+cast_shadow = 0
+lifetime = 5.83
+mesh = SubResource("QuadMesh_fs56w")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.04
+emission_ring_radius = 0.14
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 15.43
+flatness = 0.18
+gravity = Vector3(0, 0.2, 0)
+initial_velocity_min = 0.6
+initial_velocity_max = 0.7
+damping_min = 0.291
+damping_max = 1.102
+scale_amount_min = 0.48
+scale_amount_curve = SubResource("Curve_4x5l1")
