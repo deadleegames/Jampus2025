@@ -56,7 +56,7 @@ grow_horizontal = 2
 layout_mode = 2
 theme = ExtResource("2_tk8dj")
 theme_override_font_sizes/font_size = 50
-text = "Working Title"
+text = "Limb Heist"
 
 [connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

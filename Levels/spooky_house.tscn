@@ -18,7 +18,7 @@ sky = SubResource("Sky_g4t3k")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="SpookyHouse" type="Node3D"]
+[node name="SpookyHouse" type="Node3D" groups=["level"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oe4ec")
