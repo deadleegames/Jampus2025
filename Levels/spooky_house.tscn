@@ -272,6 +272,24 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
 depth = 5.0
 
+[node name="Cut_Firstfloor13" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.07406, 7.25, 0.09999943)
+operation = 2
+size = Vector3(15.8, 4.5, 19.800001)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/Cut_Firstfloor13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3769827, 0, -8.137969)
+shadow_enabled = true
+omni_range = 8.364
+omni_attenuation = 2.856
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CSGCombiner3D/Cut_Firstfloor13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3769827, 0, 8.811822)
+shadow_enabled = true
+omni_range = 8.364
+omni_attenuation = 2.856
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGCombiner3D"]
 [node name="Poly_3F_OverBallRoom" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9, 9.49371, 0)
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
