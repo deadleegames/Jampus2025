@@ -27,3 +27,23 @@ clip_4/auto_advance = 0
 clip_5/name = &"End"
 clip_5/stream = ExtResource("6_amyn0")
 clip_5/auto_advance = 0
+_transitions = {
+Vector2i(2, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 0
+},
+Vector2i(3, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 0
+},
+Vector2i(5, 0): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 3,
+"to_time": 1
+}
+}

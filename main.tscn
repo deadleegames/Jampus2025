@@ -1,35 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://bis7v4b4onnjq"]
+[gd_scene load_steps=10 format=3 uid="uid://bis7v4b4onnjq"]
 
 [ext_resource type="Script" uid="uid://cjdwi12unhhu6" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://da455na6f2i5w" path="res://UI/main_menu.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://q3c281rkgxp8" path="res://Levels/spooky_house.tscn" id="2_kek77"]
 [ext_resource type="Script" uid="uid://5na4gssrcnvn" path="res://Scripts/menus.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bwg6odu23tffb" path="res://UI/player_hud.tscn" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://dl0ce770slnd3" path="res://UI/game_over.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dmhvdoi22vmd8" path="res://UI/game_win.tscn" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bq0p20wg67amt" path="res://Levels/level_0.tscn" id="7_272bh"]
-[ext_resource type="AudioStream" uid="uid://y20b4hypxxgr" path="res://Audio/chase sheperd.mp3" id="8_5vw27"]
-[ext_resource type="AudioStream" uid="uid://bt2wfas6atb6v" path="res://Audio/chase sheperd end.mp3" id="9_kek77"]
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5vw27"]
-clip_count = 2
-clip_0/name = &"Menu"
-clip_0/stream = ExtResource("8_5vw27")
-clip_0/auto_advance = 0
-clip_1/name = &"End"
-clip_1/stream = ExtResource("9_kek77")
-clip_1/auto_advance = 0
-_transitions = {
-Vector2i(1, 0): {
-"fade_beats": 1.0,
-"fade_mode": 0,
-"from_time": 3,
-"to_time": 0
-}
-}
+[ext_resource type="AudioStream" uid="uid://dc8kf1to8c2y7" path="res://Audio/Interactions/Chase_Interaction.tres" id="8_5vw27"]
+[ext_resource type="AudioStream" uid="uid://co4ha3yiqh0t7" path="res://Audio/Playlists/Chase_Sync.tres" id="9_kek77"]
 
 [node name="Main" type="Node3D" groups=["main"]]
 process_mode = 3
 script = ExtResource("1_h2yge")
+
+[node name="SpookyHouse" parent="." instance=ExtResource("2_kek77")]
 
 [node name="Menus" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -56,13 +41,16 @@ grow_vertical = 2
 process_mode = 3
 visible = false
 
-[node name="Level0" parent="." instance=ExtResource("7_272bh")]
-
 [node name="AudioMaster" type="Node" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioMaster"]
 process_mode = 3
-stream = SubResource("AudioStreamInteractive_5vw27")
+stream = ExtResource("9_kek77")
+volume_db = -5.0
+bus = &"Music"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="AudioMaster"]
+stream = ExtResource("8_5vw27")
 volume_db = -15.0
 autoplay = true
 bus = &"Music"

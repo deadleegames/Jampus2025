@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq0p20wg67amt"]
+[gd_scene load_steps=9 format=3 uid="uid://bq0p20wg67amt"]
 
 [ext_resource type="PackedScene" uid="uid://u5viqeomp0x6" path="res://Player/player.tscn" id="1_o6pxs"]
 [ext_resource type="PackedScene" uid="uid://bhivxgv7xue6h" path="res://Interactables/pick_up.tscn" id="2_d3n4i"]
-[ext_resource type="PackedScene" uid="uid://m83oagwflxl8" path="res://Mobs/test_dummy.tscn" id="3_finow"]
 [ext_resource type="PackedScene" uid="uid://bvnv13v4mej18" path="res://Mobs/sheperd.tscn" id="4_epnel"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ak04c"]
@@ -182,30 +181,6 @@ radius = 1.4179688
 height = 7.0
 
 [node name="Enemies" type="Node" parent="."]
-
-[node name="TestDummy" parent="Enemies" instance=ExtResource("3_finow")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.760142, 0.6754885, 80.18927)
-visible = false
-
-[node name="PatrolPoints" type="Node" parent="Enemies/TestDummy"]
-
-[node name="Point1" type="Marker3D" parent="Enemies/TestDummy/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.711213, -1.9073486e-06, 80.26158)
-
-[node name="Point2" type="Marker3D" parent="Enemies/TestDummy/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7616, -1.9073486e-06, 80.26158)
-
-[node name="TestDummy2" parent="Enemies" instance=ExtResource("3_finow")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.67625, 0.6754885, 40.522728)
-visible = false
-
-[node name="PatrolPoints" type="Node" parent="Enemies/TestDummy2"]
-
-[node name="Point1" type="Marker3D" parent="Enemies/TestDummy2/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.059772, 1.9073486e-06, 39.7498)
-
-[node name="Point2" type="Marker3D" parent="Enemies/TestDummy2/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.398476, 1.9073486e-06, 39.7498)
 
 [node name="Sheperd" parent="Enemies" instance=ExtResource("4_epnel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.536335, 0.82806396, 94.393776)

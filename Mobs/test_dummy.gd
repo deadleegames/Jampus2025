@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Enemy
 
-const SPEED: float = 5.0
+@export var SPEED: float = 5.0
 const rotation_speed : float = TAU
 
 var PatrolPoints : Array[Marker3D]
@@ -15,7 +15,7 @@ var playerRef: CharacterBody3D
 signal on_state_changed(new_state: MyEnums.AIState)
 
 @onready var perception_component: Area3D = $PerceptionComponent
-@export var capture_collision: CollisionObject3D
+@export var capture_area: Area3D
 
 func _ready():
 	currentState = MyEnums.AIState.IDLE
@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 
 
 func do_chase(delta: float):
+	var capture_collision = capture_area.get_child(0)
 	capture_collision.set_deferred("disabled", false)
 	global_position = global_position.move_toward(playerRef.global_position, SPEED * delta)
 	calculate_lookat(playerRef.global_position, delta)
@@ -93,6 +94,7 @@ func calculate_lookat(lookAtLoc: Vector3, delta: float):
 
 func on_player_spotted(instigator: CharacterBody3D):
 	currentState = MyEnums.AIState.CHASE
+	instigator.currentState = MyEnums.PlayerState.IN_CHASE
 	on_state_changed.emit(currentState)
 	playerRef = instigator
 
