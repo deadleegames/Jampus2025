@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://ddk5y86eu52yi"]
+[gd_scene load_steps=18 format=4 uid="uid://ddk5y86eu52yi"]
 
 [ext_resource type="Texture2D" uid="uid://be32gwfrqsxvj" path="res://Models/ModelTextures/Brain.png" id="1_1v1pe"]
+[ext_resource type="Script" uid="uid://b58u1n7g7cuno" path="res://Interactables/turn_in.gd" id="1_gqf1k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqs8q"]
 resource_name = "Glass"
@@ -241,7 +242,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_63oq0")
 
-[node name="TurnIn" type="Node3D"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gqf1k"]
+points = PackedVector3Array(-3.4466386e-05, 2.0388932, 0.28015184, 0.1761189, 1.9689026, 0.17608461, 0.1761189, 2.093124, -3.6910176e-05, -3.4466386e-05, 2.1631832, -3.6910176e-05, -0.17611887, 2.093124, -3.6910176e-05, -0.17611887, 1.9689026, 0.17608461, -3.4466386e-05, 1.8108906, 0.28015184, 0.1761189, 1.8940258, 0.17608461, 0.1761189, 2.045844, -0.17615843, -3.4466386e-05, 2.0327682, -0.20375581, -0.17611887, 2.045844, -0.17615843, -0.17611887, 1.8940258, 0.17608461, -3.4466386e-05, 1.460112, -0.15428123, 0.1761189, 1.8691816, -3.6910176e-05, 0.1761189, 1.8940258, -0.17615843, 0.024962828, 1.6847425, -0.2324571, -0.024997294, 1.6847425, -0.2324571, -0.17611887, 1.8940258, -0.17615843, -0.17611887, 1.8691816, -3.6910176e-05, -3.4466386e-05, 1.460112, -0.16707638)
+
+[node name="TurnIn" type="StaticBody3D" groups=["interactable"]]
+script = ExtResource("1_gqf1k")
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_yn801")
@@ -258,3 +263,6 @@ skeleton = NodePath("")
 [node name="Cube" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_dsluh")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_gqf1k")

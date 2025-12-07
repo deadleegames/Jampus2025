@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://u5viqeomp0x6"]
+[gd_scene load_steps=9 format=3 uid="uid://u5viqeomp0x6"]
 
 [ext_resource type="Script" uid="uid://xvl0nljpwpqt" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://dhsk53tfwlber" path="res://Player/hand_puppet_test.tscn" id="2_4ntmi"]
@@ -6,14 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dp6fo60a8ex5l" path="res://Player/Actions/projectile_attack.tscn" id="4_k53q1"]
 [ext_resource type="PackedScene" uid="uid://bxys16a0iwwe8" path="res://Player/Actions/grapple.tscn" id="5_k53q1"]
 [ext_resource type="PackedScene" uid="uid://c7j1h3vdwhy8r" path="res://Player/Actions/simple_rope.tscn" id="6_fhl08"]
+[ext_resource type="Script" uid="uid://cyi50pew5i1uu" path="res://Player/Actions/interact_action.gd" id="7_vtle1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4ntmi"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_4ntmi"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("rope", "playerCollider", "headPitch", "camera") groups=["player"]]
 script = ExtResource("1_l8h54")
@@ -27,6 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0175598, 0)
 shape = SubResource("CapsuleShape3D_l8h54")
 
 [node name="Body" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1633443)
 
 [node name="Head" type="Marker3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5031291, 0)
@@ -55,21 +51,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4931202, 0, -1.2785587)
 [node name="SimpleRope" parent="Body/Head/Hand_Puppet" instance=ExtResource("6_fhl08")]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0181315, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_hvfyp")
-skeleton = NodePath("../..")
-
-[node name="Arrow" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.06517661, 0, 0, 0, -1.5426581e-08, 0.054372065, 0, -0.352919, -2.3766782e-09, 0, 0.19115174, -0.68149453)
-visible = false
-mesh = SubResource("CylinderMesh_4ntmi")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow"]
-transform = Transform3D(3.6947286, 0, 0, 0, 0.99999946, -3.5527137e-15, 0, -1.1368684e-13, 2.9131067, 0, 1.4994363, 1.9073486e-06)
-mesh = SubResource("PrismMesh_4ntmi")
-
 [node name="ActionComponent" type="Node" parent="."]
 script = ExtResource("3_gwnis")
 
@@ -79,5 +60,10 @@ SPEED = 75.0
 ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
 
 [node name="Grapple" parent="ActionComponent" node_paths=PackedStringArray("ray", "player") instance=ExtResource("5_k53q1")]
+ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
+player = NodePath("../..")
+
+[node name="Interact" type="Node" parent="ActionComponent" node_paths=PackedStringArray("ray", "player")]
+script = ExtResource("7_vtle1")
 ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
 player = NodePath("../..")

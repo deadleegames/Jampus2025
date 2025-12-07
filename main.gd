@@ -13,6 +13,7 @@ var is_on_main_menu : bool = true
 
 @onready var music_player: AudioStreamPlayer = $AudioMaster/MusicPlayer
 @onready var menu_music: AudioStreamPlayer = $AudioMaster/MenuMusic
+@onready var dialog_player: AudioStreamPlayer = $AudioMaster/DialogPlayer
 
 func game_over():
 	hide_all()
@@ -57,6 +58,8 @@ func pause():
 func start_game():
 	var playback = menu_music.get_stream_playback()
 	playback.switch_to_clip_by_name("End")
+	var player = get_tree().get_first_node_in_group('player')
+	player.hand_puppet.animation_player.play('Tool_Deploy')
 	hide_all()
 	CheckMenu.change_menu_context(false)
 	player_hud.visible = true
@@ -120,3 +123,10 @@ func _on_pause_menu_visibility_changed() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
 		pause()
+
+
+func _on_dialog_player_finished() -> void:
+	# var player = get_tree().get_first_node_in_group('player')
+	# var player_start = get_tree().get_first_node_in_group('player_start')
+	# player.global_posistion = player_start.global_posistion
+	pass

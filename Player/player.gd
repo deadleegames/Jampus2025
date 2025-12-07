@@ -15,13 +15,14 @@ const JUMP_VELOCITY = 4.5
 @onready var action_component: Node = $ActionComponent
 @onready var hand_puppet = $Body/Head/Hand_Puppet
 
-
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):		
 		action_component.start_action_by_name("Projectile_Attack_Action")
-	if Input.is_action_just_pressed("Interact"):		
-		action_component.start_action_by_name("Grapple_Action")
-		hand_puppet.animation_player.play('Tool_Deploy')
+	if Input.is_action_just_pressed("Grapple"):		
+		action_component.start_action_by_name("Grapple_Action")		
+	if Input.is_action_just_pressed("Interact"):
+		action_component.start_action_by_name("Interact_Action")
+		
 
 func _physics_process(delta):
 	rope.visible = bis_grappling

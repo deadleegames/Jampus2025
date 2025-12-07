@@ -21,7 +21,6 @@ func use_grapple():
 		if grapple_point:
 			player.bis_grappling = true
 			player.grapple_pos = grapple_point.global_position
-			player.hand_puppet.animation_player.play('Tool_Yank')
 			print('grapple success')
 		else:
 			print('fail')

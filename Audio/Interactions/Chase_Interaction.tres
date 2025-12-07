@@ -1,6 +1,6 @@
 [gd_resource type="AudioStreamInteractive" load_steps=8 format=3 uid="uid://dc8kf1to8c2y7"]
 
-[ext_resource type="AudioStream" uid="uid://y20b4hypxxgr" path="res://Audio/chase sheperd.mp3" id="1_lhgcg"]
+[ext_resource type="AudioStream" uid="uid://cny2a6rahqk8k" path="res://Audio/background.mp3" id="1_0gawm"]
 [ext_resource type="AudioStream" uid="uid://c7k4hl2fxn4yk" path="res://Audio/chase sheperd near.mp3" id="2_0gawm"]
 [ext_resource type="AudioStream" uid="uid://c8eh3fw3obklm" path="res://Audio/chase sheperd mid.mp3" id="3_attna"]
 [ext_resource type="AudioStream" uid="uid://27bmnbcbj0t4" path="res://Audio/chase sheperd far.mp3" id="4_5jj5o"]
@@ -11,7 +11,7 @@
 [resource]
 clip_count = 7
 clip_0/name = &"Default"
-clip_0/stream = ExtResource("1_lhgcg")
+clip_0/stream = ExtResource("1_0gawm")
 clip_0/auto_advance = 0
 clip_1/name = &"Near"
 clip_1/stream = ExtResource("2_0gawm")
