@@ -18,6 +18,12 @@ func game_over():
 	hide_all()
 	game_over_ui.visible = true
 	CheckMenu.change_menu_context(true)
+	
+	var playback1 = music_player.get_stream_playback()
+	playback1.stop()
+	
+	var playback = menu_music.get_stream_playback()
+	playback.switch_to_clip_by_name("GameOver")
 
 func game_win():
 	hide_all()

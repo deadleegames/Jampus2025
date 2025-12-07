@@ -13,12 +13,15 @@ const JUMP_VELOCITY = 4.5
 @export var rope: MeshInstance3D
 
 @onready var action_component: Node = $ActionComponent
+@onready var hand_puppet = $Body/Head/Hand_Puppet
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):		
 		action_component.start_action_by_name("Projectile_Attack_Action")
 	if Input.is_action_just_pressed("Interact"):		
 		action_component.start_action_by_name("Grapple_Action")
+		hand_puppet.animation_player.play('Tool_Deploy')
 
 func _physics_process(delta):
 	rope.visible = bis_grappling
@@ -30,13 +33,13 @@ func _physics_process(delta):
 		# print('distance ' + str(distance))
 		# rope.global_scale(Vector3(0, distance, 0))
 		# print('rope scale ' + str(rope.global_basis.get_scale().y))
-		rope.stretch_between($Body/Head/Hand_Puppet/GrappleSpawn.global_position, grapple_pos)
+		#rope.stretch_between($Body/Head/Hand_Puppet/GrappleSpawn.global_position, grapple_pos)
 
 		var additional_speed = abs(distance_vec.z) + abs(distance_vec.x)
 		#tween_scale(rope, Vector3(0, distance, 0), .5)
 
 		var direction = global_position.direction_to(grapple_pos)
-		#velocity = direction * SPEED * additional_speed
+		velocity = direction * SPEED * additional_speed
 
 		if compare_x_z(global_position, grapple_pos, 2.0):
 			bis_grappling = false

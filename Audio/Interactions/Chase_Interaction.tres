@@ -1,4 +1,4 @@
-[gd_resource type="AudioStreamInteractive" load_steps=7 format=3 uid="uid://dc8kf1to8c2y7"]
+[gd_resource type="AudioStreamInteractive" load_steps=8 format=3 uid="uid://dc8kf1to8c2y7"]
 
 [ext_resource type="AudioStream" uid="uid://y20b4hypxxgr" path="res://Audio/chase sheperd.mp3" id="1_lhgcg"]
 [ext_resource type="AudioStream" uid="uid://c7k4hl2fxn4yk" path="res://Audio/chase sheperd near.mp3" id="2_0gawm"]
@@ -6,9 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://27bmnbcbj0t4" path="res://Audio/chase sheperd far.mp3" id="4_5jj5o"]
 [ext_resource type="AudioStream" uid="uid://xgd5e82lvhps" path="res://Audio/chase sheperd hide.mp3" id="5_gbtiy"]
 [ext_resource type="AudioStream" uid="uid://bt2wfas6atb6v" path="res://Audio/chase sheperd end.mp3" id="6_amyn0"]
+[ext_resource type="AudioStream" uid="uid://c7hiitgeyowwn" path="res://Audio/gameover.mp3" id="7_0gawm"]
 
 [resource]
-clip_count = 6
+clip_count = 7
 clip_0/name = &"Default"
 clip_0/stream = ExtResource("1_lhgcg")
 clip_0/auto_advance = 0
@@ -27,6 +28,9 @@ clip_4/auto_advance = 0
 clip_5/name = &"End"
 clip_5/stream = ExtResource("6_amyn0")
 clip_5/auto_advance = 0
+clip_6/name = &"GameOver"
+clip_6/stream = ExtResource("7_0gawm")
+clip_6/auto_advance = 0
 _transitions = {
 Vector2i(2, 1): {
 "fade_beats": 1.0,

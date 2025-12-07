@@ -32,7 +32,7 @@ shape = SubResource("CapsuleShape3D_l8h54")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5031291, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Body/Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13719198, -4.0888786e-05, -0.6878354)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13719198, -4.0888786e-05, -1.0791051)
 
 [node name="RayCast3D" type="RayCast3D" parent="Body/Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.47033685)
@@ -44,7 +44,7 @@ debug_shape_thickness = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -99.99998, 4.7683716e-06)
 
 [node name="Hand_Puppet" parent="Body/Head" instance=ExtResource("2_4ntmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15172422, -0.2330041)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06619966, -0.97702074)
 
 [node name="GrappleSpawn" type="Marker3D" parent="Body/Head/Hand_Puppet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, 0, -1.2785587)
@@ -53,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, 0, -1.2785587)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4931202, 0, -1.2785587)
 
 [node name="SimpleRope" parent="Body/Head/Hand_Puppet" instance=ExtResource("6_fhl08")]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0181315, 0)

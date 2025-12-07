@@ -63,5 +63,6 @@ autoplay = true
 bus = &"Music"
 
 [node name="SpookyHouse" parent="." groups=["level"] instance=ExtResource("11_efxa6")]
+process_mode = 1
 
 [connection signal="visibility_changed" from="Menus/PauseMenu" to="." method="_on_pause_menu_visibility_changed"]

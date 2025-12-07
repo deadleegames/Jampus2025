@@ -1090,7 +1090,6 @@ points = PackedVector3Array(0.39542627, 1.475467, -0.3851029, -0.35829827, 1.275
 radius = 1.5470717
 
 [node name="Sheperd" type="CharacterBody3D" node_paths=PackedStringArray("capture_area") groups=["enemy"]]
-up_direction = Vector3(1, 0, 0)
 script = ExtResource("1_ua0eo")
 SPEED = 4.5
 capture_area = NodePath("CaptureArea")

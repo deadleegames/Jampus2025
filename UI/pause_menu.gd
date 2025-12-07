@@ -11,3 +11,8 @@ func _on_settings_btn_pressed() -> void:
 	var main = get_tree().get_first_node_in_group('main')
 	main.settings()
 
+func _on_continue_btn_pressed():
+	hide()
+	CheckMenu.change_menu_context(false)
+	var main = get_tree().get_first_node_in_group('main')
+	main.player_hud.visible = true
