@@ -1,16 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://q3c281rkgxp8"]
+[gd_scene load_steps=21 format=3 uid="uid://q3c281rkgxp8"]
 
 [ext_resource type="Material" uid="uid://b6qmjmj78c5dy" path="res://Models/ModelTextures/PavingStones115b/Stones.tres" id="1_hq2al"]
-[ext_resource type="PackedScene" uid="uid://m83oagwflxl8" path="res://Mobs/test_dummy.tscn" id="1_o372j"]
 [ext_resource type="PackedScene" uid="uid://bqpxix1bulvpn" path="res://Models/LevelGeo/Mansion_Fascia.blend" id="2_6bgwg"]
 [ext_resource type="PackedScene" uid="uid://k4bsund7ioav" path="res://Models/LevelGeo/FoyerStairs.glb" id="2_o0l0h"]
 [ext_resource type="PackedScene" uid="uid://u5viqeomp0x6" path="res://Player/player.tscn" id="3_g4t3k"]
 [ext_resource type="PackedScene" uid="uid://bvnv13v4mej18" path="res://Mobs/sheperd.tscn" id="4_oe4ec"]
-[ext_resource type="PackedScene" uid="uid://bhivxgv7xue6h" path="res://Interactables/pick_up.tscn" id="5_6yvat"]
 [ext_resource type="PackedScene" uid="uid://dx0xogjeaiyft" path="res://Interactables/grapple_point.tscn" id="6_3wlf8"]
+[ext_resource type="PackedScene" uid="uid://bacnrrgvnaw17" path="res://Mobs/gooberv2.tscn" id="7_ft7tv"]
 [ext_resource type="PackedScene" uid="uid://can22mexlkb7o" path="res://Models/3rdParty/low_poly_fence_1.tscn" id="8_hrd6m"]
 [ext_resource type="Texture2D" uid="uid://bevjfhjsa4f1o" path="res://Models/3rdParty/Texture/grass_3.png" id="8_m30un"]
+[ext_resource type="PackedScene" uid="uid://cj5ojpnogh5e" path="res://Interactables/tome.tscn" id="8_xte7d"]
+[ext_resource type="PackedScene" uid="uid://8vr0iq6ffsdy" path="res://Interactables/soul_jar.tscn" id="9_ft7tv"]
 [ext_resource type="PackedScene" uid="uid://ddk5y86eu52yi" path="res://Interactables/turn_in.tscn" id="10_hq2al"]
+[ext_resource type="PackedScene" uid="uid://c351wr7wmi3jf" path="res://Interactables/siphon.tscn" id="11_fhv2o"]
+[ext_resource type="PackedScene" uid="uid://tfis4vs87q2l" path="res://Objects/crate_1.tscn" id="12_gqgse"]
+[ext_resource type="PackedScene" uid="uid://bqum11d2n7srs" path="res://Objects/grave_4.tscn" id="15_ft7tv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0l0h"]
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -406,31 +410,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -176
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="TestDummy2" parent="Enemies" instance=ExtResource("1_o372j")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 26.479666, 5.0463037, -13.067161)
-
-[node name="PatrolPoints" type="Node" parent="Enemies/TestDummy2"]
-
-[node name="Point1" type="Marker3D" parent="Enemies/TestDummy2/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.320898, 5.8434396, -17.840631)
-
-[node name="Point2" type="Marker3D" parent="Enemies/TestDummy2/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.320898, 5.8434396, -12.684015)
-
-[node name="Point3" type="Marker3D" parent="Enemies/TestDummy2/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.288086, 5.8434396, -12.684015)
-
-[node name="TestDummy" parent="Enemies" instance=ExtResource("1_o372j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.800686, 0, -7.1350684)
-
-[node name="PatrolPoints" type="Node" parent="Enemies/TestDummy"]
-
-[node name="Point1" type="Marker3D" parent="Enemies/TestDummy/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19506824, -7.065236)
-
-[node name="Point2" type="Marker3D" parent="Enemies/TestDummy/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0200686, 0.19506824, -3.7484097)
-
 [node name="Sheperd" parent="Enemies" instance=ExtResource("4_oe4ec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.200413, 0.29306817, 0.9394284)
 
@@ -479,16 +458,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.628452, -0.99727106, 25.2
 [node name="Point3" type="Marker3D" parent="Enemies/Sheperd3/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.769585, -2.30329, 0.19035149)
 
+[node name="Goober" parent="Enemies" instance=ExtResource("7_ft7tv")]
+transform = Transform3D(-0.99463445, 0, -0.10345231, 0, 1, 0, 0.10345231, 0, -0.99463445, 28.482857, 5.169353, -12.410345)
+
+[node name="PatrolPoints" type="Node" parent="Enemies/Goober"]
+
+[node name="Point1" type="Marker3D" parent="Enemies/Goober/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.320898, 5.8434396, -17.840631)
+
+[node name="Point2" type="Marker3D" parent="Enemies/Goober/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.320898, 5.8434396, -12.684015)
+
+[node name="Point3" type="Marker3D" parent="Enemies/Goober/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.288086, 5.8434396, -12.684015)
+
+[node name="Goober2" parent="Enemies" instance=ExtResource("7_ft7tv")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, 28.113785, 5.0356402, 17.722107)
+
+[node name="PatrolPoints" type="Node" parent="Enemies/Goober2"]
+
+[node name="Goober3" parent="Enemies" instance=ExtResource("7_ft7tv")]
+transform = Transform3D(-0.009860995, 0, 0.99995136, 0, 1, 0, -0.99995136, 0, -0.009860995, -4.547445, -0.030741215, -5.807967)
+
+[node name="PatrolPoints" type="Node" parent="Enemies/Goober3"]
+
+[node name="Point1" type="Marker3D" parent="Enemies/Goober3/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7004104, -0.030741215, -5.807967)
+
+[node name="Point2" type="Marker3D" parent="Enemies/Goober3/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7004104, -0.030741215, 7.046095)
+
+[node name="Point3" type="Marker3D" parent="Enemies/Goober3/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4520135, -0.030741215, 7.046095)
+
+[node name="Point4" type="Marker3D" parent="Enemies/Goober3/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4520135, -0.030741215, -5.8649845)
+
 [node name="Pickups" type="Node" parent="."]
 
-[node name="PickUp" parent="Pickups" instance=ExtResource("5_6yvat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.833838, 5.393435, -16.351013)
+[node name="Siphon" parent="Pickups" instance=ExtResource("11_fhv2o")]
+transform = Transform3D(0.10360846, 0.0077247988, 0.9945881, -0.99461824, 0.0008046851, 0.10360532, 2.9088381e-11, -0.9999698, 0.007766597, 13.568253, 7.1255136, 8.005606)
 
-[node name="PickUp2" parent="Pickups" instance=ExtResource("5_6yvat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.95587, 0.7573757, -3.942791)
+[node name="Tome" parent="Pickups" instance=ExtResource("8_xte7d")]
+transform = Transform3D(-4.371138e-08, 0, -1, 0.5904789, 0.8070531, -2.5810653e-08, 0.8070531, -0.5904789, -3.5277413e-08, 10.619267, 0.90187216, 23.980993)
 
-[node name="PickUp3" parent="Pickups" instance=ExtResource("5_6yvat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.283516, 6.1072574, 11.436299)
+[node name="SoulJar" parent="Pickups" instance=ExtResource("9_ft7tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.564583, 4.993709, 12.829596)
 
 [node name="GrapplePoint" parent="." instance=ExtResource("6_3wlf8")]
 transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 25.397589, 6.1926966, 1.3094578)
@@ -884,6 +899,9 @@ transform = Transform3D(-0.39687565, 0, 0.9178724, 0, 1, 0, -0.9178724, 0, -0.39
 [node name="Fence78" parent="Outside/Fence2" instance=ExtResource("8_hrd6m")]
 transform = Transform3D(-0.39687565, 0, 0.9178724, 0, 1, 0, -0.9178724, 0, -0.39687565, -107.269455, -3.0103226, 57.104244)
 
+[node name="Fence85" parent="Outside/Fence2" instance=ExtResource("8_hrd6m")]
+transform = Transform3D(0.7266346, 0, 0.68702424, 0, 1, 0, -0.68702424, 0, 0.7266346, -98.45592, -3.010323, 54.84634)
+
 [node name="Fence79" parent="Outside/Fence2" instance=ExtResource("8_hrd6m")]
 transform = Transform3D(-0.39687565, 0, 0.9178724, 0, 1, 0, -0.9178724, 0, -0.39687565, -103.40772, -3.0103226, 66.03541)
 
@@ -968,6 +986,23 @@ transform = Transform3D(0.37329546, 0, 0.9277126, 0, 1, 0, -0.9277126, 0, 0.3732
 [node name="GrapplePoint2" parent="Outside" instance=ExtResource("6_3wlf8")]
 transform = Transform3D(0.48810345, 0, -0.8727858, 0, 1, 0, 0.8727858, 0, 0.48810345, -82.13374, 0.51775646, 50.10904)
 
+[node name="Crate_1" parent="Outside" instance=ExtResource("12_gqgse")]
+transform = Transform3D(0.15954818, 0, -0.25405586, 0, 0.29999998, 0, 0.25405586, 0, 0.15954818, -100.25664, -2.6904979, 49.22693)
+
+[node name="Crate_2" parent="Outside" instance=ExtResource("12_gqgse")]
+transform = Transform3D(0.3628793, 0, -0.16828133, 0, 0.4, 0, 0.16828133, 0, 0.3628793, -98.64871, -2.624524, 49.22693)
+
+[node name="Crate_3" parent="Outside" instance=ExtResource("12_gqgse")]
+transform = Transform3D(0.49691024, 0, 0.055500284, 0, 0.5, 0, -0.055500284, 0, 0.49691024, -99.76088, -2.45959, 48.166233)
+
+[node name="Goober" parent="Outside" instance=ExtResource("7_ft7tv")]
+transform = Transform3D(0.74062866, 0, -0.6719145, 0, 1, 0, 0.6719145, 0, 0.74062866, -103.057205, -3.0819654, 49.449806)
+
+[node name="PatrolPoints" type="Node" parent="Outside/Goober"]
+
+[node name="Point1" type="Marker3D" parent="Outside/Goober/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.057205, -3.0819654, 49.449806)
+
 [node name="StartArea" type="Node" parent="."]
 
 [node name="TurnIn" parent="StartArea" instance=ExtResource("10_hq2al")]
@@ -989,3 +1024,6 @@ height = 9.072266
 
 [node name="PlayerStart" type="Marker3D" parent="." groups=["player_start"]]
 transform = Transform3D(0.9484952, 0, 0.31679153, 0, 1, 0, -0.31679153, 0, 0.9484952, -97.4931, -1.4436903, 60.976368)
+
+[node name="Grave_4" parent="." instance=ExtResource("15_ft7tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6740265, 2.3841858e-07, 23.946398)

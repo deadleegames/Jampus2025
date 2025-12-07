@@ -21,6 +21,8 @@ func _ready():
 	currentState = MyEnums.AIState.IDLE
 
 	perception_component.player_spotted.connect(on_player_spotted)
+	perception_component.on_suspicion.connect(on_suspicion)
+	perception_component.clear_suspicion.connect(on_clear_suspicion)
 
 	var patrol_node = get_node("PatrolPoints")
 	if patrol_node == null:
@@ -30,10 +32,10 @@ func _ready():
 	
 	if	points != null:
 		for point in points:
-			print('point ' + point.name)
 			PatrolPoints.append(point)
 
-	currentState = MyEnums.AIState.PATROL
+	if points.size() > 1:
+		currentState = MyEnums.AIState.PATROL
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,8 +52,13 @@ func _physics_process(delta: float) -> void:
 		MyEnums.AIState.CHASE:
 			do_chase(delta)
 
+		MyEnums.AIState.SEARCH:
+			do_search(delta)
+
 	move_and_slide()
 
+func do_search(delta: float):
+	calculate_lookat(playerRef.global_position, delta)
 
 func do_chase(delta: float):
 	var capture_collision = capture_area.get_child(0)
@@ -95,6 +102,20 @@ func calculate_lookat(lookAtLoc: Vector3, delta: float):
 			
 	var theta = wrapf(atan2(-direction.x, -direction.z) - rotation.y + PI/2, -PI, PI)
 	rotation.y += clamp(rotation_speed * delta, 0, abs(theta)) * sign(theta)
+
+func on_suspicion(instigator: CharacterBody3D):
+	currentState = MyEnums.AIState.SEARCH
+	on_state_changed.emit(currentState)
+	playerRef = instigator
+
+func on_clear_suspicion():
+	if  PatrolPoints and PatrolPoints.size() > 1:
+		currentState = MyEnums.AIState.PATROL
+	else:
+		currentState = MyEnums.AIState.IDLE
+
+	on_state_changed.emit(currentState)
+	playerRef = null
 
 func on_player_spotted(instigator: CharacterBody3D):
 	currentState = MyEnums.AIState.CHASE

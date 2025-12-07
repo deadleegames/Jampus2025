@@ -516,6 +516,21 @@ tracks/35/interp = 0
 tracks/35/loop_wrap = true
 tracks/35/keys = PackedFloat32Array(0, 1, 0.5023988, -0.62620705, -0.49758884, 0.32842883)
 
+[sub_resource type="Animation" id="Animation_jbybe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PerceptionComponent:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.49639815, 2.2609622, -0.006320089)]
+}
+
 [sub_resource type="Animation" id="Animation_slhbv"]
 resource_name = "Rest"
 length = 0.041666668
@@ -1029,21 +1044,6 @@ tracks/35/interp = 0
 tracks/35/loop_wrap = true
 tracks/35/keys = PackedFloat32Array(0, 1, 0.5023988, -0.62620705, -0.49758884, 0.32842883)
 
-[sub_resource type="Animation" id="Animation_jbybe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PerceptionComponent:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.49639815, 2.2609622, -0.006320089)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jsy20"]
 _data = {
 &"Idle": SubResource("Animation_tbn6k"),
@@ -1407,6 +1407,9 @@ bus = &"Effects"
 [node name="PerceptionComponent" parent="." instance=ExtResource("3_dn3iv")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.49639815, 2.2609622, -0.006320089)
 
+[node name="RayCast3D" parent="PerceptionComponent" index="0"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.36450332, 0)
+
 [node name="Cone" parent="PerceptionComponent" instance=ExtResource("4_sij4j")]
 transform = Transform3D(-5.6824803e-08, -1.3, 5.6824803e-08, 0, -5.6824803e-08, -1.3, 1.3, -5.6824803e-08, 2.483891e-15, 1.5593795, -0.117467046, 0)
 visible = false
@@ -1479,3 +1482,5 @@ debug_color = Color(0.93272084, 2.3969114e-05, 0.6496301, 0.41960785)
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
 [connection signal="body_entered" from="CaptureArea" to="." method="_on_capture_area_body_entered"]
+
+[editable path="PerceptionComponent"]
