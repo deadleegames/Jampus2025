@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwg6odu23tffb"]
+[gd_scene load_steps=12 format=3 uid="uid://bwg6odu23tffb"]
 
 [ext_resource type="Script" uid="uid://b41ypaox0ya2w" path="res://UI/player_hud.gd" id="1_dpci0"]
 [ext_resource type="Texture2D" uid="uid://de8sssbmscsvl" path="res://UI/Assets/crosshair161.png" id="1_pi8qp"]
 [ext_resource type="FontFile" uid="uid://c8m6i4invtyrb" path="res://UI/Fonts/Darinia.ttf" id="2_5o0p8"]
+[ext_resource type="AudioStream" uid="uid://cnpmg7wvgi2vu" path="res://Audio/doctor sane i guess.mp3" id="4_lhy1a"]
 
 [sub_resource type="Gradient" id="Gradient_x57b6"]
 colors = PackedColorArray(0, 0, 0, 0.3882353, 0, 0, 0, 0.1882353)
@@ -19,6 +20,86 @@ colors = PackedColorArray(0, 0.40455505, 0, 1, 0.3721148, 0.7604518, 0, 1)
 gradient = SubResource("Gradient_5o0p8")
 width = 250
 height = 35
+
+[sub_resource type="Animation" id="Animation_fneal"]
+resource_name = "intro"
+length = 240.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact_Container/SubtitlesLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 7.320638, 12.393399, 24.633333, 31.042765, 36.18425, 39.752434, 42.123177, 50.919872, 56.933334, 62.2, 66.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["To Puppet...", "my greatest accomplishment", "my only friend, my personal servant", "my greatest disappointment, my ultimate weapon
+", "If you're hearing this, it means that my body has been destroyed.
+
+", "No doubt by that madman across the street.
+
+", "I know, very sad.
+
+", "But do not fear, Puppet,
+
+", "for in my genius, I foresaw this eventuality years ago
+
+", "Set a plan in motion
+
+", "the culmination of which will be my rebirth and the
+
+", "DAWN OF MY IMMORTALITY!
+
+", "STEIN WILL RUE THE DAY
+
+"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pmtv2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact_Container/SubtitlesLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_miyt4"]
+_data = {
+&"RESET": SubResource("Animation_pmtv2"),
+&"intro": SubResource("Animation_fneal")
+}
 
 [node name="PlayerHud" type="Control"]
 layout_mode = 3
@@ -88,7 +169,6 @@ layout_mode = 2
 text = "Do this"
 
 [node name="Interact_Container" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -102,29 +182,22 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="Interact_Container"]
+[node name="SubtitlesLabel" type="Label" parent="Interact_Container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 24
-text = "Press 'E'"
 
-[node name="Grapple_Container" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -47.0
-offset_top = -104.0
-offset_right = 52.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="Grapple_Container"]
+[node name="InteractLabel" type="Label" parent="Interact_Container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 24
-text = "Press 'F'"
+
+[node name="DialogAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_miyt4")
+}
+
+[node name="DialogPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lhy1a")
+volume_db = -5.0
+bus = &"Effects"

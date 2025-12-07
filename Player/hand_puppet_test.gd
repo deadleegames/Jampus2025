@@ -1,3 +1,8 @@
 extends Node3D
 
-@onready var animation_player = $AnimationPlayer
+signal yank_player()
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func yank():
+	yank_player.emit()

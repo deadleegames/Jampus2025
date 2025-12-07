@@ -49,6 +49,8 @@ visible = false
 [node name="PauseMenu" parent="Menus" instance=ExtResource("9_efxa6")]
 visible = false
 
+[node name="DialogAnimationPlayer" type="AnimationPlayer" parent="Menus/PauseMenu"]
+
 [node name="AudioMaster" type="Node" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioMaster"]

@@ -1,4 +1,7 @@
 extends Control
 
-@onready var interact_container: VBoxContainer = $Interact_Container
-@onready var grapple_container: VBoxContainer = $Grapple_Container
+@onready var subtitles_label: Label = $Interact_Container/SubtitlesLabel
+@onready var interact_label: Label = $Interact_Container/InteractLabel
+
+func set_interact_text(text: String):
+	interact_label.text = text

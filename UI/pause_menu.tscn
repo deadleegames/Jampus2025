@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6862745)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="DefaultPause" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,28 +36,28 @@ offset_bottom = 239.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DefaultPause"]
 layout_mode = 2
 
-[node name="ContinueBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ContinueBtn" type="Button" parent="DefaultPause/VBoxContainer"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 theme = ExtResource("1_ltd3m")
 text = "Continue"
 
-[node name="SettingsBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SettingsBtn" type="Button" parent="DefaultPause/VBoxContainer"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 theme = ExtResource("1_ltd3m")
 text = "Settings"
 
-[node name="ReturnBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ReturnBtn" type="Button" parent="DefaultPause/VBoxContainer"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 theme = ExtResource("1_ltd3m")
 text = "Return to Menu"
 
-[node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="QuitBtn" type="Button" parent="DefaultPause/VBoxContainer"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 theme = ExtResource("1_ltd3m")
@@ -81,7 +81,39 @@ theme_override_font_sizes/font_size = 50
 text = "Paused"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnBtn" to="." method="_on_return_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[node name="DialogPause" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -173.0
+offset_right = 132.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogPause"]
+layout_mode = 2
+
+[node name="ContinueBtn" type="Button" parent="DialogPause/VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+text = "Continue"
+
+[node name="SkipBtn" type="Button" parent="DialogPause/VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+text = "Skip"
+
+[connection signal="pressed" from="DefaultPause/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="DefaultPause/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="DefaultPause/VBoxContainer/ReturnBtn" to="." method="_on_return_btn_pressed"]
+[connection signal="pressed" from="DefaultPause/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="DialogPause/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="DialogPause/VBoxContainer/SkipBtn" to="." method="_on_skip_btn_pressed"]
