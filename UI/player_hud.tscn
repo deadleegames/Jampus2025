@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b41ypaox0ya2w" path="res://UI/player_hud.gd" id="1_dpci0"]
 [ext_resource type="Texture2D" uid="uid://de8sssbmscsvl" path="res://UI/Assets/crosshair161.png" id="1_pi8qp"]
 [ext_resource type="FontFile" uid="uid://c8m6i4invtyrb" path="res://UI/Fonts/Darinia.ttf" id="2_5o0p8"]
-[ext_resource type="AudioStream" uid="uid://cnpmg7wvgi2vu" path="res://Audio/doctor sane i guess.mp3" id="4_lhy1a"]
+[ext_resource type="AudioStream" uid="uid://djdhes42jn4mx" path="res://Audio/doctor_sane_short.wav" id="4_lhy1a"]
 
 [sub_resource type="Gradient" id="Gradient_x57b6"]
 colors = PackedColorArray(0, 0, 0, 0.3882353, 0, 0, 0, 0.1882353)
@@ -31,29 +31,10 @@ tracks/0/path = NodePath("Interact_Container/SubtitlesLabel:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.0333333, 7.320638, 12.393399, 24.633333, 31.042765, 36.18425, 39.752434, 42.123177, 50.919872, 56.933334, 62.2, 66.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3.0333333, 7.320638, 12.393399, 21.1, 27.166666, 34.933334, 44.166668, 51.566666, 59.4, 63.866665, 67.76667, 70.73333, 77.9, 81.166664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": ["To Puppet...", "my greatest accomplishment", "my only friend, my personal servant", "my greatest disappointment, my ultimate weapon
-", "If you're hearing this, it means that my body has been destroyed.
-
-", "No doubt by that madman across the street.
-
-", "I know, very sad.
-
-", "But do not fear, Puppet,
-
-", "for in my genius, I foresaw this eventuality years ago
-
-", "Set a plan in motion
-
-", "the culmination of which will be my rebirth and the
-
-", "DAWN OF MY IMMORTALITY!
-
-", "STEIN WILL RUE THE DAY
-
-"]
+"values": ["To Puppet...", "my greatest accomplishment", "my only friend, my personal servant", "my greatest disappointment, my ultimate weapon", "Unfortunately, if you're hearing this,", "it also means we still have work to do.", "We're still missing... let's see", "One Tome of the Damned, first edition (hardcover)", "A Tortured Soul, has to be a full jar", "[Gibberish]", "Pretty standard stuff", "So, just bring that back here", "hook it up to the cloning tank, flip the lever", "and we should be good to go", "now go, my errand boy!"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,6 +47,54 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer2/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 44.132683),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer2/CheckBox:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335, 44.132683),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer2/CheckBox2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 51.69055),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VBoxContainer2/CheckBox3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 59.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_pmtv2"]
@@ -89,6 +118,54 @@ tracks/1/path = NodePath("DialogPlayer:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer2/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer2/CheckBox:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer2/CheckBox2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VBoxContainer2/CheckBox3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -159,14 +236,32 @@ offset_bottom = 40.0
 grow_horizontal = 0
 
 [node name="Label" type="Label" parent="VBoxContainer2"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 32
 text = "Objectives:"
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer2"]
+visible = false
 layout_mode = 2
-text = "Do this"
+theme_override_fonts/font = ExtResource("2_5o0p8")
+theme_override_font_sizes/font_size = 20
+text = "Tome of the Damned"
+
+[node name="CheckBox2" type="CheckBox" parent="VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5o0p8")
+theme_override_font_sizes/font_size = 20
+text = "Soul Jar"
+
+[node name="CheckBox3" type="CheckBox" parent="VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5o0p8")
+theme_override_font_sizes/font_size = 20
+text = "V̴̬͘i̵͎͗͊ẗ̷̨̘́̚ả̵͍̜l̶̳͈̒̿ ̸͍̀̋E̸̲̓s̷̩̼͒s̵̢̧̐̇e̵̬͌͗n̸̳͗̆ĉ̵̝͐ͅḛ̷̤̐̔ ̴̡̻̍S̷͖̹̈i̴̲̖͌p̴͉̕h̷̫̯́ǫ̶̫͗͝n̶̛̖͌"
 
 [node name="Interact_Container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -183,14 +278,17 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="SubtitlesLabel" type="Label" parent="Interact_Container"]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
 
 [node name="InteractLabel" type="Label" parent="Interact_Container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
 
 [node name="DialogAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
