@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwg6odu23tffb"]
+[gd_scene load_steps=8 format=3 uid="uid://bwg6odu23tffb"]
 
+[ext_resource type="Script" uid="uid://b41ypaox0ya2w" path="res://UI/player_hud.gd" id="1_dpci0"]
 [ext_resource type="Texture2D" uid="uid://de8sssbmscsvl" path="res://UI/Assets/crosshair161.png" id="1_pi8qp"]
+[ext_resource type="FontFile" uid="uid://c8m6i4invtyrb" path="res://UI/Fonts/Darinia.ttf" id="2_5o0p8"]
 
 [sub_resource type="Gradient" id="Gradient_x57b6"]
 colors = PackedColorArray(0, 0, 0, 0.3882353, 0, 0, 0, 0.1882353)
@@ -26,6 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_dpci0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 100)
@@ -37,6 +40,7 @@ offset_bottom = 120.0
 theme_override_constants/separation = 5
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 value = 50.0
@@ -62,3 +66,65 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_pi8qp")
 expand_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5o0p8")
+theme_override_font_sizes/font_size = 32
+text = "Objectives:"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Do this"
+
+[node name="Interact_Container" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -104.0
+offset_right = 52.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Interact_Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5o0p8")
+theme_override_font_sizes/font_size = 24
+text = "Press 'E'"
+
+[node name="Grapple_Container" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -104.0
+offset_right = 52.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Grapple_Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5o0p8")
+theme_override_font_sizes/font_size = 24
+text = "Press 'F'"

@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq0p20wg67amt"]
+[gd_scene load_steps=11 format=3 uid="uid://bq0p20wg67amt"]
 
 [ext_resource type="PackedScene" uid="uid://u5viqeomp0x6" path="res://Player/player.tscn" id="1_o6pxs"]
 [ext_resource type="PackedScene" uid="uid://bhivxgv7xue6h" path="res://Interactables/pick_up.tscn" id="2_d3n4i"]
+[ext_resource type="PackedScene" uid="uid://dx0xogjeaiyft" path="res://Interactables/grapple_point.tscn" id="4_5pqfd"]
 [ext_resource type="PackedScene" uid="uid://bvnv13v4mej18" path="res://Mobs/sheperd.tscn" id="4_epnel"]
+[ext_resource type="PackedScene" uid="uid://3nsvb0sj4rle" path="res://Player/Actions/rope.tscn" id="5_5pqfd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ak04c"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,6 +27,9 @@ albedo_color = Color(0.9999997, 0.9240399, 0.21715108, 1)
 
 [node name="Level0" type="Node3D" groups=["level"]]
 process_mode = 1
+
+[node name="GrapplePoint3" parent="." instance=ExtResource("4_5pqfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45604634, 3.2844472, 68.70399)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d3n4i")
@@ -183,7 +188,7 @@ height = 7.0
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Sheperd" parent="Enemies" instance=ExtResource("4_epnel")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.536335, 0.82806396, 94.393776)
+transform = Transform3D(0.33408648, 0, 0.94254243, 0, 1, 0, -0.94254243, 0, 0.33408648, -12.692883, 0.82806396, 98.44144)
 
 [node name="PatrolPoints" type="Node" parent="Enemies/Sheperd"]
 
@@ -193,6 +198,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.069733, 0.2024498, 100.29
 [node name="Point2" type="Marker3D" parent="Enemies/Sheperd/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7616, 0.5145159, 65.93321)
 
+[node name="GrappleRope" parent="Enemies" instance=ExtResource("5_5pqfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.798462, 0.6089686, 94.86328)
+
 [node name="Ceilings" type="Node" parent="."]
 
 [node name="Ceiling1" type="CSGBox3D" parent="Ceilings"]
@@ -201,3 +209,15 @@ visible = false
 use_collision = true
 size = Vector3(96.12654, 1.0854492, 102.47681)
 material = SubResource("StandardMaterial3D_o6pxs")
+
+[node name="GrapplePoint" parent="." instance=ExtResource("4_5pqfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50763106, 1.8324008, 79.635765)
+
+[node name="GrapplePoint4" parent="." instance=ExtResource("4_5pqfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87866, 1.8324003, 87.39326)
+
+[node name="GrapplePoint5" parent="." instance=ExtResource("4_5pqfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3338213, 1.8324003, 94.7199)
+
+[node name="GrapplePoint2" parent="." instance=ExtResource("4_5pqfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.95942, 4.498993, 73.96068)

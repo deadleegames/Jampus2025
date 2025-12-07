@@ -1,20 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://bis7v4b4onnjq"]
+[gd_scene load_steps=13 format=3 uid="uid://bis7v4b4onnjq"]
 
 [ext_resource type="Script" uid="uid://cjdwi12unhhu6" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://da455na6f2i5w" path="res://UI/main_menu.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://q3c281rkgxp8" path="res://Levels/spooky_house.tscn" id="2_kek77"]
 [ext_resource type="Script" uid="uid://5na4gssrcnvn" path="res://Scripts/menus.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bwg6odu23tffb" path="res://UI/player_hud.tscn" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://dl0ce770slnd3" path="res://UI/game_over.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dmhvdoi22vmd8" path="res://UI/game_win.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://csg612imesvnc" path="res://UI/settings_menu.tscn" id="8_4c57u"]
 [ext_resource type="AudioStream" uid="uid://dc8kf1to8c2y7" path="res://Audio/Interactions/Chase_Interaction.tres" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://b34mpi3xhoy8p" path="res://UI/pause_menu.tscn" id="9_efxa6"]
 [ext_resource type="AudioStream" uid="uid://co4ha3yiqh0t7" path="res://Audio/Playlists/Chase_Sync.tres" id="9_kek77"]
+[ext_resource type="AudioStream" uid="uid://cnpmg7wvgi2vu" path="res://Audio/doctor sane i guess.mp3" id="11_dg77c"]
+[ext_resource type="PackedScene" uid="uid://q3c281rkgxp8" path="res://Levels/spooky_house.tscn" id="11_efxa6"]
 
 [node name="Main" type="Node3D" groups=["main"]]
 process_mode = 3
 script = ExtResource("1_h2yge")
-
-[node name="SpookyHouse" parent="." instance=ExtResource("2_kek77")]
 
 [node name="Menus" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -41,6 +42,13 @@ grow_vertical = 2
 process_mode = 3
 visible = false
 
+[node name="SettingsMenu" parent="Menus" instance=ExtResource("8_4c57u")]
+process_mode = 3
+visible = false
+
+[node name="PauseMenu" parent="Menus" instance=ExtResource("9_efxa6")]
+visible = false
+
 [node name="AudioMaster" type="Node" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioMaster"]
@@ -54,3 +62,14 @@ stream = ExtResource("8_5vw27")
 volume_db = -15.0
 autoplay = true
 bus = &"Music"
+
+[node name="DialogPlayer" type="AudioStreamPlayer" parent="AudioMaster"]
+stream = ExtResource("11_dg77c")
+volume_db = -5.0
+bus = &"Effects"
+
+[node name="SpookyHouse" parent="." groups=["level"] instance=ExtResource("11_efxa6")]
+process_mode = 1
+
+[connection signal="visibility_changed" from="Menus/PauseMenu" to="." method="_on_pause_menu_visibility_changed"]
+[connection signal="finished" from="AudioMaster/DialogPlayer" to="." method="_on_dialog_player_finished"]

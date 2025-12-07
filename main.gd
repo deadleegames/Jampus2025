@@ -2,18 +2,29 @@ extends Node3D
 
 const ZERO_VOLUME = -40
 
+var is_on_main_menu : bool = true
+
 @onready var main_menu_ui: Control = $Menus/MainMenu
 @onready var game_over_ui: Control = $Menus/GameOver
 @onready var game_win_ui: Control = $Menus/GameWin
 @onready var player_hud: Control = $Menus/PlayerHud
+@onready var settings_menu_ui: Control = $Menus/SettingsMenu
+@onready var pause_menu_ui: Control = $Menus/PauseMenu
 
 @onready var music_player: AudioStreamPlayer = $AudioMaster/MusicPlayer
 @onready var menu_music: AudioStreamPlayer = $AudioMaster/MenuMusic
+@onready var dialog_player: AudioStreamPlayer = $AudioMaster/DialogPlayer
 
 func game_over():
 	hide_all()
 	game_over_ui.visible = true
 	CheckMenu.change_menu_context(true)
+	
+	var playback1 = music_player.get_stream_playback()
+	playback1.stop()
+	
+	var playback = menu_music.get_stream_playback()
+	playback.switch_to_clip_by_name("GameOver")
 
 func game_win():
 	hide_all()
@@ -25,30 +36,44 @@ func restart_game():
 	GameState.reset()
 	main_menu_ui.visible = true
 	CheckMenu.change_menu_context(true)
+	is_on_main_menu = true
+
+func main_menu():
+	hide_all()
+	main_menu_ui.visible = true
+	CheckMenu.change_menu_context(true)
+	is_on_main_menu = true
+
+func settings():
+	hide_all()
+	settings_menu_ui.visible = true
+	CheckMenu.change_menu_context(true)
+
+func pause():
+	if not is_on_main_menu:
+		hide_all()
+		pause_menu_ui.visible = true
+		CheckMenu.change_menu_context(true)
 
 func start_game():
 	var playback = menu_music.get_stream_playback()
 	playback.switch_to_clip_by_name("End")
+	var player = get_tree().get_first_node_in_group('player')
+	player.hand_puppet.animation_player.play('Tool_Deploy')
 	hide_all()
 	CheckMenu.change_menu_context(false)
 	player_hud.visible = true
+	is_on_main_menu = false
 
 func hide_all():
-	main_menu_ui.visible = false
-	game_over_ui.visible = false
-	game_win_ui.visible = false
-	player_hud.visible = false
+	main_menu_ui.hide()
+	game_over_ui.hide()
+	game_win_ui.hide()
+	player_hud.hide()
+	settings_menu_ui.hide()
+	pause_menu_ui.hide()
 
-func change_music(player_state: MyEnums.PlayerState):
-	var playback = music_player.get_stream_playback()
-
-	match player_state:
-		MyEnums.PlayerState.IN_CHASE:
-			playback.switch_to_clip_by_name("End")
-		MyEnums.PlayerState.DEFAULT:
-			playback.switch_to_clip_by_name("End")
-
-func _process(delta):
+func _process(_delta):
 	var p = get_tree().get_first_node_in_group('player') as Player
 	
 	if p.currentState == MyEnums.PlayerState.IN_CHASE:
@@ -88,5 +113,20 @@ func _process(delta):
 		stream_sync.set_sync_stream_volume(1, ZERO_VOLUME)
 		stream_sync.set_sync_stream_volume(2, t)
 		
-		
-		 
+
+func _on_pause_menu_visibility_changed() -> void:
+	if get_tree().paused:
+		get_tree().paused = false
+	else:
+		get_tree().paused = true
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Pause"):
+		pause()
+
+
+func _on_dialog_player_finished() -> void:
+	# var player = get_tree().get_first_node_in_group('player')
+	# var player_start = get_tree().get_first_node_in_group('player_start')
+	# player.global_posistion = player_start.global_posistion
+	pass

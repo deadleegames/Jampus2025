@@ -39,6 +39,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
 	match currentState:
 		MyEnums.AIState.PATROL:
 			do_patrol(delta)

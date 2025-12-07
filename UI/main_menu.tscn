@@ -47,16 +47,18 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -206.0
-offset_right = 212.0
-offset_bottom = 200.0
+offset_left = -224.0
+offset_top = 71.0
+offset_right = 219.0
+offset_bottom = 271.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="BoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_tk8dj")
-theme_override_font_sizes/font_size = 50
-text = "Limb Heist"
+theme_override_font_sizes/font_size = 60
+text = "Shadow Puppet"
 
 [connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

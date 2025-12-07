@@ -1,0 +1,144 @@
+[gd_scene load_steps=2 format=3 uid="uid://csg612imesvnc"]
+
+[ext_resource type="Script" uid="uid://02xpcwpsgekd" path="res://UI/settings_menu.gd" id="1_77no7"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_77no7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="MasterScrollBar" type="HScrollBar" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 25)
+layout_direction = 3
+layout_mode = 2
+size_flags_vertical = 4
+min_value = -15.0
+max_value = 40.0
+page = 3.0
+value = 12.0
+custom_step = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Music "
+
+[node name="MusicScrollBar" type="HScrollBar" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 25)
+layout_direction = 3
+layout_mode = 2
+size_flags_vertical = 4
+min_value = -15.0
+max_value = 40.0
+page = 3.0
+value = 12.0
+custom_step = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Effects"
+
+[node name="EffectsScrollBar" type="HScrollBar" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 25)
+layout_direction = 3
+layout_mode = 2
+size_flags_vertical = 4
+min_value = -15.0
+max_value = 40.0
+page = 3.0
+value = 12.0
+custom_step = 1.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Ambience"
+
+[node name="AmbienceScrollBar" type="HScrollBar" parent="VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 25)
+layout_direction = 3
+layout_mode = 2
+size_flags_vertical = 4
+min_value = -15.0
+max_value = 40.0
+page = 3.0
+value = -10.0
+custom_step = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="BackBtn" type="Button" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/MasterScrollBar" to="." method="_on_master_scroll_bar_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/MusicScrollBar" to="." method="_on_music_scroll_bar_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer3/EffectsScrollBar" to="." method="_on_effects_scroll_bar_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/BackBtn" to="." method="_on_back_btn_pressed"]

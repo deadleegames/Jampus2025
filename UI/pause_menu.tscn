@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://b34mpi3xhoy8p"]
+
+[ext_resource type="Script" uid="uid://cjwlyhnms7hjc" path="res://UI/pause_menu.gd" id="1_jfm1e"]
+[ext_resource type="Theme" uid="uid://gmf2e3v8ts2k" path="res://UI/Themes/main_menu.tres" id="1_ltd3m"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfm1e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6862745)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -173.0
+offset_right = 132.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ContinueBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+text = "Continue"
+
+[node name="SettingsBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+text = "Settings"
+
+[node name="ReturnBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+text = "Return to Menu"
+
+[node name="QuitBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+text = "Quit"
+
+[node name="BoxContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -206.0
+offset_right = 212.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="BoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ltd3m")
+theme_override_font_sizes/font_size = 50
+text = "Paused"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnBtn" to="." method="_on_return_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
