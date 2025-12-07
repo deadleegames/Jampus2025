@@ -39,6 +39,7 @@ shape = SubResource("ConvexPolygonShape3D_17pbn")
 [node name="SpotLight3D" type="SpotLight3D" parent="PerceptionComponent"]
 transform = Transform3D(-1.4570463e-08, 0, -0.33333334, 0, 0.33333334, 0, 0.33333334, 0, -1.4570463e-08, 0.209598, -0.04872662, 0)
 spot_range = 8.863332
+spot_attenuation = 0.04
 spot_angle = 24.49535
 
 [node name="Lantern_Directional2" parent="PerceptionComponent" node_paths=PackedStringArray("spot_light", "perception_collision") instance=ExtResource("4_6hm3u")]
