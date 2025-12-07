@@ -1,14 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm6vda7m67gwq"]
+[gd_scene load_steps=12 format=3 uid="uid://cm6vda7m67gwq"]
 
 [ext_resource type="PackedScene" uid="uid://10dwbwx1fsrs" path="res://Models/SoulJar.blend" id="1_nyb5f"]
 [ext_resource type="Texture2D" uid="uid://g8w7tb5nytp4" path="res://Models/ModelTextures/TorturedSoul3.png" id="2_amgou"]
 [ext_resource type="Texture2D" uid="uid://2g2sxlod2xyf" path="res://Models/ModelTextures/TorturedSoul2.png" id="3_amgou"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_amgou"]
+sky_top_color = Color(0.026292602, 0.039670978, 0.059542067, 1)
+sky_horizon_color = Color(0.4718607, 0.20171162, 0.120863564, 1)
+sky_curve = 0.0097056
+ground_horizon_color = Color(0.0033730383, 0.0035285074, 0.0038521737, 1)
+sun_angle_max = 30.18
+
+[sub_resource type="Sky" id="Sky_u7xq8"]
+sky_material = SubResource("ProceduralSkyMaterial_amgou")
+
+[sub_resource type="Environment" id="Environment_fs56w"]
+background_mode = 2
+sky = SubResource("Sky_u7xq8")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7xq8"]
 transparency = 3
 alpha_hash_scale = 1.0
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_amgou")
+emission_enabled = true
+emission = Color(0, 0.105882354, 0, 1)
+emission_energy_multiplier = 0.23
+emission_texture = ExtResource("2_amgou")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -28,6 +48,9 @@ transparency = 3
 alpha_hash_scale = 1.0
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("3_amgou")
+emission_enabled = true
+emission_energy_multiplier = 0.22
+emission_texture = ExtResource("3_amgou")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -40,11 +63,15 @@ size = Vector2(0.2, 0.2)
 
 [node name="SoulJar" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fs56w")
+
 [node name="SoulJar_Model" parent="." instance=ExtResource("1_nyb5f")]
 
 [node name="Ballheads" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07232222, 0)
 cast_shadow = 0
+amount = 16
 lifetime = 2.38
 mesh = SubResource("QuadMesh_4x5l1")
 emission_shape = 6
@@ -82,7 +109,13 @@ flatness = 0.18
 gravity = Vector3(0, 0.2, 0)
 initial_velocity_min = 0.6
 initial_velocity_max = 0.7
-damping_min = 0.291
-damping_max = 1.102
+damping_min = 0.67
+damping_max = 0.68
 scale_amount_min = 0.48
 scale_amount_curve = SubResource("Curve_4x5l1")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5623968, 0)
+light_color = Color(0.4574551, 0.7313084, 0.4154838, 1)
+spot_range = 1.935
+spot_angle = 18.15
