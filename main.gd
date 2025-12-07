@@ -49,11 +49,14 @@ func settings():
 	settings_menu_ui.visible = true
 	CheckMenu.change_menu_context(true)
 
-func pause():
+func pause():	
 	if not is_on_main_menu:
 		hide_all()
-		pause_menu_ui.visible = true
+		pause_menu_ui.show_menu(dialog_player.playing)
 		CheckMenu.change_menu_context(true)
+
+func skip_dialouge():
+	dialog_player.stop()
 
 func start_game():
 	var playback = menu_music.get_stream_playback()
