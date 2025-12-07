@@ -129,6 +129,18 @@ light_color = Color(1, 1, 0.85490197, 1)
 spot_range = 9.929
 spot_angle = 67.5
 
+[node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/Cut_Firstfloor13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3769827, 0, -8.137969)
+shadow_enabled = true
+omni_range = 8.364
+omni_attenuation = 2.856
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CSGCombiner3D/Cut_Firstfloor13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3769827, 0, 8.811822)
+shadow_enabled = true
+omni_range = 8.364
+omni_attenuation = 2.856
+
 [node name="Cut_Firstfloor2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5543456, -2.75, 17.619724)
 operation = 2
@@ -272,24 +284,13 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
 depth = 5.0
 
-[node name="Cut_Firstfloor13" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="Cut_Firstfloor16" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.07406, 7.25, 0.09999943)
 operation = 2
 size = Vector3(15.8, 4.5, 19.800001)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/Cut_Firstfloor13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3769827, 0, -8.137969)
-shadow_enabled = true
-omni_range = 8.364
-omni_attenuation = 2.856
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="CSGCombiner3D/Cut_Firstfloor13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3769827, 0, 8.811822)
-shadow_enabled = true
-omni_range = 8.364
-omni_attenuation = 2.856
-
 [node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGCombiner3D"]
+
 [node name="Poly_3F_OverBallRoom" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9, 9.49371, 0)
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
@@ -347,19 +348,24 @@ radius = 4.7716084
 light_color = Color(0.88235295, 1, 1, 1)
 omni_range = 11.521858
 
-[node name="TestDummy" parent="." instance=ExtResource("1_o372j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.800686, 0, -7.1350684)
-
-[node name="PatrolPoints" type="Node" parent="TestDummy"]
-
-[node name="Point1" type="Marker3D" parent="TestDummy/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19506824, -7.065236)
-
-[node name="Point2" type="Marker3D" parent="TestDummy/PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0200686, 0.19506824, -3.7484097)
-
 [node name="FoyerStairs" parent="." instance=ExtResource("2_o0l0h")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.43367982, 0, 2.8624291)
 
 [node name="Player" parent="." instance=ExtResource("3_g4t3k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7007265, 0, 17.406248)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="TestDummy2" parent="Enemies" instance=ExtResource("1_o372j")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 26.479666, 5.0463037, -13.067161)
+
+[node name="TestDummy" parent="Enemies" instance=ExtResource("1_o372j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.800686, 0, -7.1350684)
+
+[node name="PatrolPoints" type="Node" parent="Enemies/TestDummy"]
+
+[node name="Point1" type="Marker3D" parent="Enemies/TestDummy/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19506824, -7.065236)
+
+[node name="Point2" type="Marker3D" parent="Enemies/TestDummy/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0200686, 0.19506824, -3.7484097)

@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dc8kf1to8c2y7" path="res://Audio/Interactions/Chase_Interaction.tres" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://b34mpi3xhoy8p" path="res://UI/pause_menu.tscn" id="9_efxa6"]
 [ext_resource type="AudioStream" uid="uid://co4ha3yiqh0t7" path="res://Audio/Playlists/Chase_Sync.tres" id="9_kek77"]
-[ext_resource type="PackedScene" uid="uid://bq0p20wg67amt" path="res://Levels/level_0.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://q3c281rkgxp8" path="res://Levels/spooky_house.tscn" id="11_efxa6"]
 
 [node name="Main" type="Node3D" groups=["main"]]
 process_mode = 3
@@ -62,6 +62,6 @@ volume_db = -15.0
 autoplay = true
 bus = &"Music"
 
-[node name="Level0" parent="." instance=ExtResource("11_efxa6")]
+[node name="SpookyHouse" parent="." groups=["level"] instance=ExtResource("11_efxa6")]
 
 [connection signal="visibility_changed" from="Menus/PauseMenu" to="." method="_on_pause_menu_visibility_changed"]

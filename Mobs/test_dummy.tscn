@@ -14,10 +14,10 @@ points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -
 [sub_resource type="SphereShape3D" id="SphereShape3D_6hm3u"]
 radius = 1.1713572
 
-[node name="TestDummy" type="CharacterBody3D" node_paths=PackedStringArray("capture_collision") groups=["enemy"]]
+[node name="TestDummy" type="CharacterBody3D" node_paths=PackedStringArray("capture_area") groups=["enemy"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_y6cxs")
-capture_collision = NodePath("CaptureArea")
+capture_area = NodePath("CaptureArea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.007149, 0)
