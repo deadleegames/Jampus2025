@@ -13,7 +13,6 @@ var is_on_main_menu : bool = true
 
 @onready var music_player: AudioStreamPlayer = $AudioMaster/MusicPlayer
 @onready var menu_music: AudioStreamPlayer = $AudioMaster/MenuMusic
-@onready var dialog_player: AudioStreamPlayer = $AudioMaster/DialogPlayer
 
 func game_over():
 	hide_all()
@@ -34,6 +33,7 @@ func game_win():
 func restart_game():
 	hide_all()
 	GameState.reset()
+	player_hud.reset()
 	main_menu_ui.visible = true
 	CheckMenu.change_menu_context(true)
 	is_on_main_menu = true
@@ -52,11 +52,15 @@ func settings():
 func pause():	
 	if not is_on_main_menu:
 		hide_all()
-		pause_menu_ui.show_menu(dialog_player.playing)
+		pause_menu_ui.show_menu(player_hud.dialog_animation_player.is_playing())
 		CheckMenu.change_menu_context(true)
 
+func play_dialog():
+	player_hud.dialog_animation_player.play('intro')
+
 func skip_dialouge():
-	dialog_player.stop()
+	player_hud.stop_dialog()
+	player_hud.show_objective()
 
 func start_game():
 	var playback = menu_music.get_stream_playback()
