@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://cj5ojpnogh5e"]
+[gd_scene load_steps=10 format=4 uid="uid://cj5ojpnogh5e"]
 
+[ext_resource type="Script" uid="uid://b6ad0nmlumjqg" path="res://Interactables/pick_up.gd" id="1_iplps"]
 [ext_resource type="Texture2D" uid="uid://b6otuaknf4bf0" path="res://Models/ModelTextures/TomePages.png" id="1_rg884"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fr7o3"]
@@ -81,10 +82,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8aqup")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rg884"]
-points = PackedVector3Array(0.2488102, -0.010620411, 0.38131636, 0.2488102, -0.022610746, 0.38131636, 0.2488102, 0.00599581, 0.22873008, -0.24881017, -0.010620411, 0.38131636, -0.24881017, -0.022610746, 0.38131636, 0.2488102, -0.022610746, -0.38131636, -0.24881017, 0.00599581, 0.22873008, 0.2488102, 0.00599581, -0.22880475, -0.24881017, -0.022610746, -0.38131636, 0.2488102, -0.010620411, -0.38131636, -0.24881017, 0.00599581, -0.22880475, -0.24881017, -0.010620411, -0.38131636)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f28g1"]
+points = PackedVector3Array(0.23935284, 0.05408959, 0.233673, 0.23935284, 0.06507757, 0.15404788, -0.2354832, 0.05408959, 0.233673, 0.2294877, 0.04088378, 0.30679515, 0.22149272, 0.025120603, 0.36907908, 0.22149272, -0.008724706, 0.36394897, 0.2320592, 0.0059909597, 0.22875968, 0.2320592, 0.00011047255, 0.07196608, 0.23935284, 0.05408959, -0.23374528, -0.23828845, 0.06507757, 0.15404788, 0.23935284, 0.06507757, -0.15412015, -0.2321169, 0.0059909597, 0.22875968, -0.22155043, -0.008724706, 0.36394897, -0.22155043, 0.025120603, 0.36907908, -0.22641288, 0.04088378, 0.30679515, 0.22149272, -0.008724706, -0.3640212, 0.2320592, 0.00011047255, -0.07203835, 0.2320592, 0.0059909597, -0.22883193, 0.22149272, 0.025120603, -0.36907908, 0.2294877, 0.04088378, -0.30686745, -0.2354832, 0.05408959, -0.23374528, -0.2321169, 0.00011047255, 0.07196608, -0.23828845, 0.06507757, -0.15412015, -0.22155043, -0.008724706, -0.3640212, -0.22155043, 0.025120603, -0.36907908, -0.22641288, 0.04088378, -0.30686745, -0.2321169, 0.0059909597, -0.22883193, -0.2321169, 0.00011047255, -0.07203835)
 
-[node name="Tome" type="Node3D"]
+[node name="Tome" type="StaticBody3D" groups=["tome"]]
+script = ExtResource("1_iplps")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_acnte")
@@ -94,7 +96,5 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_lxb17")
 skeleton = NodePath("")
 
-[node name="InteractCollision" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractCollision"]
-shape = SubResource("ConvexPolygonShape3D_rg884")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_f28g1")

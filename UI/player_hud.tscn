@@ -21,82 +21,6 @@ gradient = SubResource("Gradient_5o0p8")
 width = 250
 height = 35
 
-[sub_resource type="Animation" id="Animation_fneal"]
-resource_name = "intro"
-length = 240.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Interact_Container/SubtitlesLabel:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.0333333, 7.320638, 12.393399, 21.1, 27.166666, 34.933334, 44.166668, 51.566666, 59.4, 63.866665, 67.76667, 70.73333, 77.9, 81.166664),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": ["To Puppet...", "my greatest accomplishment", "my only friend, my personal servant", "my greatest disappointment, my ultimate weapon", "Unfortunately, if you're hearing this,", "it also means we still have work to do.", "We're still missing... let's see", "One Tome of the Damned, first edition (hardcover)", "A Tortured Soul, has to be a full jar", "[Gibberish]", "Pretty standard stuff", "So, just bring that back here", "hook it up to the cloning tank, flip the lever", "and we should be good to go", "now go, my errand boy!"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DialogPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer2/Label:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 44.132683),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VBoxContainer2/CheckBox:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.033333335, 44.132683),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VBoxContainer2/CheckBox2:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 51.69055),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("VBoxContainer2/CheckBox3:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 59.36667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="Animation" id="Animation_pmtv2"]
 length = 0.001
 tracks/0/type = "value"
@@ -172,6 +96,96 @@ tracks/5/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_fneal"]
+resource_name = "intro"
+length = 89.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact_Container/SubtitlesLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 7.320638, 12.393399, 21.1, 27.166666, 34.933334, 44.166668, 51.566666, 59.4, 63.866665, 67.76667, 70.73333, 77.9, 81.166664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["To Puppet...", "my greatest accomplishment", "my only friend, my personal servant", "my greatest disappointment, my ultimate weapon", "Unfortunately, if you're hearing this,", "it also means we still have work to do.", "We're still missing... let's see", "One Tome of the Damned, first edition (hardcover)", "A Tortured Soul, has to be a full jar", "[Gibberish]", "Pretty standard stuff", "So, just bring that back here", "hook it up to the cloning tank, flip the lever", "and we should be good to go", "now go, my errand boy!"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer2/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 44.132683),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer2/CheckBox:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335, 44.132683),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer2/CheckBox2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 51.69055),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VBoxContainer2/CheckBox3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 59.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(88.36667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"dialog_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_miyt4"]
 _data = {
 &"RESET": SubResource("Animation_pmtv2"),
@@ -238,6 +252,7 @@ grow_horizontal = 0
 [node name="Label" type="Label" parent="VBoxContainer2"]
 visible = false
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 32
 text = "Objectives:"
@@ -245,6 +260,7 @@ text = "Objectives:"
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer2"]
 visible = false
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 20
 text = "Tome of the Damned"
@@ -252,6 +268,7 @@ text = "Tome of the Damned"
 [node name="CheckBox2" type="CheckBox" parent="VBoxContainer2"]
 visible = false
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 20
 text = "Soul Jar"
@@ -259,9 +276,18 @@ text = "Soul Jar"
 [node name="CheckBox3" type="CheckBox" parent="VBoxContainer2"]
 visible = false
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 20
 text = "V̴̬͘i̵͎͗͊ẗ̷̨̘́̚ả̵͍̜l̶̳͈̒̿ ̸͍̀̋E̸̲̓s̷̩̼͒s̵̢̧̐̇e̵̬͌͗n̸̳͗̆ĉ̵̝͐ͅḛ̷̤̐̔ ̴̡̻̍S̷͖̹̈i̴̲̖͌p̴͉̕h̷̫̯́ǫ̶̫͗͝n̶̛̖͌"
+
+[node name="CheckBox4" type="CheckBox" parent="VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_5o0p8")
+theme_override_font_sizes/font_size = 20
+text = "Escape!"
 
 [node name="Interact_Container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -280,12 +306,14 @@ grow_vertical = 0
 [node name="SubtitlesLabel" type="Label" parent="Interact_Container"]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
 [node name="InteractLabel" type="Label" parent="Interact_Container"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("2_5o0p8")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1

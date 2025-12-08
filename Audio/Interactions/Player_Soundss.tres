@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://ojc7bk3o2uv1"]
+
+[ext_resource type="AudioStream" uid="uid://c5k6fnl4wg4fq" path="res://Audio/animation deploy.mp3" id="1_f73xu"]
+[ext_resource type="AudioStream" uid="uid://c1djbs6xgrb1h" path="res://Audio/Animation Extract i guess.mp3" id="2_w2rw5"]
+
+[resource]
+clip_count = 2
+clip_0/name = &"Yank"
+clip_0/stream = ExtResource("1_f73xu")
+clip_0/auto_advance = 0
+clip_1/name = &"Extract"
+clip_1/stream = ExtResource("2_w2rw5")
+clip_1/auto_advance = 0

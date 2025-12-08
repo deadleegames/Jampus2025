@@ -1,7 +1,12 @@
-[gd_scene load_steps=18 format=4 uid="uid://ddk5y86eu52yi"]
+[gd_scene load_steps=27 format=4 uid="uid://ddk5y86eu52yi"]
 
 [ext_resource type="Texture2D" uid="uid://be32gwfrqsxvj" path="res://Models/ModelTextures/Brain.png" id="1_1v1pe"]
 [ext_resource type="Script" uid="uid://b58u1n7g7cuno" path="res://Interactables/turn_in.gd" id="1_gqf1k"]
+[ext_resource type="PackedScene" uid="uid://cnfpkhlxibsek" path="res://Objects/hand_puppet_cross.tscn" id="3_fh6t8"]
+[ext_resource type="PackedScene" uid="uid://c5ybde3qiht52" path="res://Models/Tome.blend" id="4_t063s"]
+[ext_resource type="PackedScene" uid="uid://da3ecaad7jwn7" path="res://Models/Siphon.blend" id="5_t37kh"]
+[ext_resource type="PackedScene" uid="uid://8vr0iq6ffsdy" path="res://Interactables/soul_jar.tscn" id="6_l665s"]
+[ext_resource type="AudioStream" uid="uid://gngpxdx875on" path="res://Audio/audiolog_victory.mp3" id="7_x7gt0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqs8q"]
 resource_name = "Glass"
@@ -245,6 +250,229 @@ shadow_mesh = SubResource("ArrayMesh_63oq0")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gqf1k"]
 points = PackedVector3Array(-3.4466386e-05, 2.0388932, 0.28015184, 0.1761189, 1.9689026, 0.17608461, 0.1761189, 2.093124, -3.6910176e-05, -3.4466386e-05, 2.1631832, -3.6910176e-05, -0.17611887, 2.093124, -3.6910176e-05, -0.17611887, 1.9689026, 0.17608461, -3.4466386e-05, 1.8108906, 0.28015184, 0.1761189, 1.8940258, 0.17608461, 0.1761189, 2.045844, -0.17615843, -3.4466386e-05, 2.0327682, -0.20375581, -0.17611887, 2.045844, -0.17615843, -0.17611887, 1.8940258, 0.17608461, -3.4466386e-05, 1.460112, -0.15428123, 0.1761189, 1.8691816, -3.6910176e-05, 0.1761189, 1.8940258, -0.17615843, 0.024962828, 1.6847425, -0.2324571, -0.024997294, 1.6847425, -0.2324571, -0.17611887, 1.8940258, -0.17615843, -0.17611887, 1.8691816, -3.6910176e-05, -3.4466386e-05, 1.460112, -0.16707638)
 
+[sub_resource type="Animation" id="Animation_itkyh"]
+resource_name = "Default"
+
+[sub_resource type="Animation" id="Animation_x7gt0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinishItems:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinishItems/Tome:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.3074582, 1.7540156, 0.66380715)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FinishItems/Siphon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.14682649, 1.9006293, 0.7360326)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FinishItems/SoulJar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.1631255, 1.0846069, 0.8825694)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpotLight3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpotLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpotLight3D:light_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l665s"]
+resource_name = "Victory"
+length = 21.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinishItems:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinishItems/Tome:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.3074582, 1.7540156, 0.66380715), Vector3(1.3074582, 1.2876548, 0.66380715)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FinishItems/Siphon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.14682649, 1.9006293, 0.7360326), Vector3(-0.14682649, 1.5764287, 0.7360326)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FinishItems/SoulJar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.1631255, 1.0846069, 0.8825694), Vector3(-1.1631255, 1.0846069, 0.07628101)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpotLight3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.23333335, 0.3, 0.4, 0.55578727, 0.73333335, 0.8333333, 1, 1.3333334, 1.7234588, 1.8901254, 1.9567921, 2.0234587, 2.1234589, 2.279246, 2.456792, 2.556792, 2.7234588, 3.5406275, 4.184378, 4.3510447, 4.4177113, 4.4843783, 4.5843782, 4.740165, 4.9177113, 5.0177116, 5.184378, 5.5177116, 5.907837, 6.0745034, 6.1411705, 6.207837, 6.307837, 6.463624, 6.6411705, 6.74117, 6.907837, 7.766667, 8.76491, 8.931577, 8.998243, 9.06491, 9.164909, 9.320697, 9.498243, 9.598243, 9.76491, 10.098243, 10.488369, 10.655035, 10.721702, 10.788368, 10.888369, 11.044156, 11.221702, 11.321702, 11.488369, 12.082701, 13.246404, 13.413071, 13.479737, 13.546404, 13.646403, 13.802191, 13.979737, 14.079737, 14.246404, 14.579737, 14.969862, 15.136529, 15.203196, 15.269862, 15.369863, 15.52565, 15.703196, 15.803196, 15.969862, 16.7, 18.27261, 18.439276, 18.505943, 18.572609, 18.67261, 18.828398, 19.005943, 19.105944, 19.27261, 19.605944, 19.996069, 20.162735, 20.229403, 20.296068, 20.396069, 20.551855, 20.729403, 20.829401, 20.996069),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpotLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 200.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpotLight3D:light_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(19.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_victory_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7gt0"]
+_data = {
+&"Default": SubResource("Animation_itkyh"),
+&"RESET": SubResource("Animation_x7gt0"),
+&"Victory": SubResource("Animation_l665s")
+}
+
 [node name="TurnIn" type="StaticBody3D" groups=["interactable"]]
 script = ExtResource("1_gqf1k")
 
@@ -266,3 +494,44 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_gqf1k")
+
+[node name="PuppetCross" parent="." instance=ExtResource("3_fh6t8")]
+transform = Transform3D(0.9089562, 0.34271628, -0.23736903, 0.08765718, 0.39953423, 0.9125177, 0.40757173, -0.8502458, 0.33311754, 1.2725754, 1.2912699, 0.85321736)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PuppetCross"]
+transform = Transform3D(0.90895635, -0.4075718, 0.08765717, 0.34271634, 0.8502459, 0.39953426, -0.237369, -0.33311763, 0.9125178, 0.30942035, 1.9631296, 3.461164)
+light_energy = 100.0
+spot_angle = 7.0754585
+
+[node name="FinishItems" type="Node3D" parent="."]
+visible = false
+
+[node name="Tome" parent="FinishItems" instance=ExtResource("4_t063s")]
+transform = Transform3D(0.35713878, -0.15885799, 0.9204436, 0.40407184, 0.9147266, 0.0010886078, -0.8421271, 0.3715365, 0.3908745, 1.3074582, 1.7540156, 0.66380715)
+
+[node name="Siphon" parent="FinishItems" instance=ExtResource("5_t37kh")]
+transform = Transform3D(0.4, 0, 0, 0, 0.39999998, -6.28829e-05, 0, 6.28829e-05, 0.39999998, -0.14682649, 1.9006293, 0.7360326)
+
+[node name="SoulJar" parent="FinishItems" instance=ExtResource("6_l665s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1631255, 1.0846069, 0.8825694)
+
+[node name="CollisionShape3D" parent="FinishItems/SoulJar" index="2"]
+disabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.9307012, -0.36516303, -0.02124516, 0.054263223, 0.19527462, -0.9792464, 0.36173323, 0.9102328, 0.20155723, -0.03285885, -1.9064775, 0.11297035)
+visible = false
+light_energy = 100.0
+spot_angle = 12.717946
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x7gt0")
+}
+autoplay = "Default"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_x7gt0")
+bus = &"Effects"
+
+[editable path="FinishItems/SoulJar"]

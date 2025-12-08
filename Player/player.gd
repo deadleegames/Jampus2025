@@ -14,25 +14,33 @@ const JUMP_VELOCITY = 4.5
 
 @onready var action_component: Node = $ActionComponent
 @onready var hand_puppet = $Body/Head/Hand_Puppet
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+var bprocess_input = true
 
 func _ready():
 	hand_puppet.yank_player.connect(on_animation_grapple_finished)
 
 func on_animation_grapple_finished():
 	action_component.start_action_by_name("Grapple_Action")
+	bprocess_input = true
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Shoot"):		
-		action_component.start_action_by_name("Projectile_Attack_Action")
-	if Input.is_action_just_pressed("Grapple"):	
-		hand_puppet.animation_player.play('Tool_Yank')		
-	if Input.is_action_just_pressed("Interact"):
-		action_component.start_action_by_name("Interact_Action")
+	if bprocess_input:
+		if Input.is_action_just_pressed("Shoot"):		
+			action_component.start_action_by_name("Projectile_Attack_Action")
+		if Input.is_action_just_pressed("Grapple"):
+			hand_puppet.animation_player.play('Tool_Yank')
+			audio_stream_player.play()
+			bprocess_input = false
+		if Input.is_action_just_pressed("Interact"):
+			action_component.start_action_by_name("Interact_Action")
 		
 
 func _physics_process(delta):
 	rope.visible = bis_grappling
 	if bis_grappling:
+		velocity = Vector3.ZERO
 		var distance_vec = global_position - grapple_pos
 
 		# var d = pow(distance_vec.x, 2) + pow(distance_vec.z, 2)
@@ -61,14 +69,15 @@ func _physics_process(delta):
 
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
-		var input_dir = Input.get_vector("Move_Left", "Move_Right", "Move_Forward", "Move_Backward")
-		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
+		if bprocess_input:
+			var input_dir = Input.get_vector("Move_Left", "Move_Right", "Move_Forward", "Move_Backward")
+			var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if direction:
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 
@@ -86,7 +95,7 @@ func _physics_process(delta):
 
 #This can be tacked on to any existing Unhandled_Input function in place of standard mouselook
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and bprocess_input:
 		mouseAim(event)
 
 func mouseAim(event : InputEventMouseMotion) -> void:

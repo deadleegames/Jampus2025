@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://beljv40jfakv5"]
+
+[ext_resource type="Script" uid="uid://d3d7qd1xyl7mq" path="res://Interactables/escape_trigger.gd" id="1_kb7uk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bgn06"]
+size = Vector3(1.807373, 2.3676758, 6.000717)
+
+[node name="EscapeTrigger" type="Area3D" groups=["escape"]]
+script = ExtResource("1_kb7uk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bgn06")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

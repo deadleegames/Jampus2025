@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=4 uid="uid://bqum11d2n7srs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpkkr"]
+resource_name = "Gravestone"
+cull_mode = 2
+albedo_color = Color(0.43037403, 0.43037403, 0.43037403, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ndv7l"]
+_surfaces = [{
+"aabb": AABB(-0.42706555, -0.33092475, -0.3084287, 0.8541311, 0.96182483, 0.6168574),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAgAEAAMAAAADAAUABQADAAQAAgAGAAQABgACAAEABQAEAAcABgAHAAQACAAFAAcABgAIAAcACAAAAAUABgABAAkACAAGAAkAAAAKAAEACgAAAAgACgALAAEACQABAAsACgAIAAwACAAJAAwADQAKAAwACgANAAsADQAMAA4ACQALAA8ADwALAA0ADAAJAA8ADwANAA4ADAAPAA4A"),
+"name": "Gravestone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("pe2IvqAoR75nBE0+VqjavqAoR75e6p2+pe2IvqAoR75nBE2+pe2Ivl/e3T5nBE2+pe2IPl/e3T5nBE2+pe2IvquCIT9nBE0+pe2IPqAoR75nBE2+pe2IPquCIT9nBE0+pe2IPqAoR75nBE0+VqjaPqAoR75e6p2+VqjavqAoR75e6p0+Vqjavvhuqb5e6p2+VqjaPqAoR75e6p0+Vqjavvhuqb5e6p0+VqjaPvhuqb5e6p0+VqjaPvhuqb5e6p2+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e83e0"]
+resource_name = "Grave_4_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.42706555, -0.33092475, -0.3084287, 0.8541311, 0.96182483, 0.6168574),
+"attribute_data": PackedByteArray("AADAPgAAgD8AAMA+AABAPwAAwD4AAEA/AADAPgAAgD8AAMA+AABAPwAAwD4AAEA/AADAPgAAgD8AAMA+AACAPwAAwD4AAAAAAADAPgAAAAAAAMA+AAAAAAAAwD4AAAAAAADAPgAAgD8AAMA+AABAPwAAwD4AAEA/AADAPgAAgD8AAMA+AABAPwAAwD4AAEA/AADAPgAAQD8AAMA+AABAPwAAAD4AAAA/AAAAPgAAgD4AAAA+AACAPgAAAD4AAAA/AADAPgAAAAAAAMA+AAAAAAAAwD4AAAAAAADAPgAAAAAAAMA+AAAAAAAAwD4AAAAAAADAPgAAAAAAAMA+AAAAAAAAwD4AAIA/AADAPgAAQD8AAMA+AACAPwAAwD4AAEA/AADAPgAAgD8AAMA+AABAPwAAwD4AAIA/AADAPgAAQD8AAMA+AABAPwAAwD4AAIA/AADAPgAAQD8AAMA+AACAPwAAwD4AAAAAAADAPgAAQD8AAMA+AAAAAAAAwD4AAEA/AADAPgAAQD8AAMA+AABAPwAAwD4AAEA/AADAPgAAQD8="),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABAABAAUABgAEAAUABgAFAAcACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEA"),
+"material": SubResource("StandardMaterial3D_lpkkr"),
+"name": "Gravestone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 52,
+"vertex_data": PackedByteArray("pe2IvqAoR75nBE0+VqjavqAoR75e6p2+pe2IvqAoR75nBE2+VqjavqAoR75e6p0+pe2IPqAoR75nBE2+VqjaPqAoR75e6p2+pe2IPqAoR75nBE0+VqjaPqAoR75e6p0+Vqjavvhuqb5e6p0+VqjaPqAoR75e6p0+VqjaPvhuqb5e6p0+VqjavqAoR75e6p0+VqjavqAoR75e6p0+Vqjavvhuqb5e6p2+VqjavqAoR75e6p2+Vqjavvhuqb5e6p0+VqjaPqAoR75e6p2+Vqjavvhuqb5e6p2+VqjaPvhuqb5e6p2+VqjavqAoR75e6p2+VqjaPvhuqb5e6p2+Vqjavvhuqb5e6p0+VqjaPvhuqb5e6p0+Vqjavvhuqb5e6p2+VqjavqAoR75e6p0+pe2IPqAoR75nBE0+VqjaPqAoR75e6p0+pe2IvqAoR75nBE0+pe2IPqAoR75nBE0+pe2IvquCIT9nBE0+pe2IPquCIT9nBE0+pe2IvqAoR75nBE0+VqjaPqAoR75e6p0+VqjaPvhuqb5e6p2+VqjaPvhuqb5e6p0+VqjaPqAoR75e6p2+pe2IvqAoR75nBE0+pe2Ivl/e3T5nBE2+pe2IvquCIT9nBE0+pe2IvqAoR75nBE2+pe2IPqAoR75nBE2+pe2IPquCIT9nBE0+pe2IPl/e3T5nBE2+pe2IPqAoR75nBE0+pe2IvquCIT9nBE0+pe2IPl/e3T5nBE2+pe2IPquCIT9nBE0+pe2Ivl/e3T5nBE2+pe2IvqAoR75nBE2+pe2IPl/e3T5nBE2+pe2Ivl/e3T5nBE2+pe2IPqAoR75nBE2+/3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9//3////8//3//f////z//f/9/////P/9//3////8/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//////////P/////////8//////////z//////////P/9/AAD///8//38AAP///z//fwAA////P/9/AAD///8//3///////z//f///////P/9///////8//3///////z//f/9/////P/9//3////8//3//f////z//f/9/////P////3////+/////f////7////9/////v////3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7////9/////v////3////+/////f////7////9/////v0mq//////8/Sar//////z9Jqv//////P0mq//////8//////////z//////////P/////////8//////////z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ndv7l")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4i1dd"]
+points = PackedVector3Array(-0.42706555, -0.33092475, -0.3084287, -0.42706555, -0.33092475, 0.3084287, -0.42706555, -0.19450304, -0.3084287, 0.42706555, -0.33092475, -0.3084287, 0.42706555, -0.33092475, 0.3084287, -0.42706555, -0.19450304, 0.3084287, -0.26745942, 0.6309001, 0.20016468, -0.26745942, 0.4332816, -0.20022506, 0.42706555, -0.19450304, -0.3084287, 0.42706555, -0.19450304, 0.3084287, 0.26737577, 0.6309001, 0.20016468, 0.26737577, 0.4332816, -0.20022506)
+
+[node name="Grave_4" type="StaticBody3D"]
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33726645, 0)
+mesh = SubResource("ArrayMesh_e83e0")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33726645, 0)
+shape = SubResource("ConvexPolygonShape3D_4i1dd")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://u5viqeomp0x6"]
+[gd_scene load_steps=10 format=3 uid="uid://u5viqeomp0x6"]
 
 [ext_resource type="Script" uid="uid://xvl0nljpwpqt" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://dhsk53tfwlber" path="res://Player/hand_puppet_test.tscn" id="2_4ntmi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxys16a0iwwe8" path="res://Player/Actions/grapple.tscn" id="5_k53q1"]
 [ext_resource type="PackedScene" uid="uid://c7j1h3vdwhy8r" path="res://Player/Actions/simple_rope.tscn" id="6_fhl08"]
 [ext_resource type="Script" uid="uid://cyi50pew5i1uu" path="res://Player/Actions/interact_action.gd" id="7_vtle1"]
+[ext_resource type="AudioStream" uid="uid://ojc7bk3o2uv1" path="res://Audio/Interactions/Player_Soundss.tres" id="8_od3ui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
 
@@ -32,15 +33,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13719198, -4.0888786e-05, -
 
 [node name="RayCast3D" type="RayCast3D" parent="Body/Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.47033685)
-target_position = Vector3(0, -100, 0)
+target_position = Vector3(0, -40, 0)
 collide_with_areas = true
 debug_shape_thickness = 5
 
 [node name="Marker3D" type="Marker3D" parent="Body/Head/Camera3D/RayCast3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -99.99998, 4.7683716e-06)
 
+[node name="InteractCast" type="RayCast3D" parent="Body/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.47033685)
+target_position = Vector3(0, -2, 0)
+collide_with_areas = true
+debug_shape_thickness = 5
+
 [node name="Hand_Puppet" parent="Body/Head" instance=ExtResource("2_4ntmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06619966, -0.97702074)
+visible = false
 
 [node name="GrappleSpawn" type="Marker3D" parent="Body/Head/Hand_Puppet"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, 0, -1.2785587)
@@ -63,7 +71,13 @@ ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
 ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
 player = NodePath("../..")
 
-[node name="Interact" type="Node" parent="ActionComponent" node_paths=PackedStringArray("ray", "player")]
+[node name="Interact" type="Node" parent="ActionComponent" node_paths=PackedStringArray("interact_ray", "grapple_ray", "player")]
 script = ExtResource("7_vtle1")
-ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
+interact_ray = NodePath("../../Body/Head/Camera3D/InteractCast")
+grapple_ray = NodePath("../../Body/Head/Camera3D/RayCast3D")
 player = NodePath("../..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_od3ui")
+volume_db = -5.0
+bus = &"Effects"
