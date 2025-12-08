@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://u5viqeomp0x6"]
+[gd_scene load_steps=11 format=3 uid="uid://u5viqeomp0x6"]
 
 [ext_resource type="Script" uid="uid://xvl0nljpwpqt" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://wc8awaac733w" path="res://Player/hands_updated.tscn" id="2_00tjw"]
 [ext_resource type="PackedScene" uid="uid://dhsk53tfwlber" path="res://Player/hand_puppet_test.tscn" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://dovjmsjhauevk" path="res://Components/action_component.gd" id="3_gwnis"]
 [ext_resource type="PackedScene" uid="uid://dp6fo60a8ex5l" path="res://Player/Actions/projectile_attack.tscn" id="4_k53q1"]
@@ -57,6 +58,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, 0, -1.2785587)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4931202, 0, -1.2785587)
 
 [node name="SimpleRope" parent="Body/Head/Hand_Puppet" instance=ExtResource("6_fhl08")]
+visible = false
+
+[node name="zzHand_Puppet_new" parent="Body/Head" instance=ExtResource("2_00tjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06619966, -0.97702074)
+visible = false
+
+[node name="GrappleSpawn" type="Marker3D" parent="Body/Head/zzHand_Puppet_new"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, 0, -1.2785587)
+
+[node name="ProjectileSpawnMarker" type="Marker3D" parent="Body/Head/zzHand_Puppet_new"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4931202, 0, -1.2785587)
+
+[node name="SimpleRope" parent="Body/Head/zzHand_Puppet_new" instance=ExtResource("6_fhl08")]
 visible = false
 
 [node name="ActionComponent" type="Node" parent="."]
