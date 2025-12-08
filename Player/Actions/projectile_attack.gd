@@ -4,6 +4,8 @@ extends Action
 @export var SPEED : float = 50
 @export var ray : RayCast3D
 
+@onready var timer: Timer = $Timer
+
 @onready var projectile: PackedScene = preload("res://Player/Actions/projectile.tscn")
 
 const DistanceTillDespawn : float = 50
@@ -13,6 +15,10 @@ func _init() -> void:
 	ActionName = "Projectile_Attack_Action"
 
 func fire_projectile() -> void:
+	if !timer.is_stopped():
+		return
+
+	timer.start()
 	var proj = projectile.instantiate()
 	
 	var end_pos = ray.global_transform.origin + (ray.global_transform.basis * ray.target_position)
@@ -28,3 +34,7 @@ func fire_projectile() -> void:
 func start_action() -> void:
 	super.start_action()
 	fire_projectile()
+
+
+func _on_timer_timeout() -> void:
+	timer.stop()

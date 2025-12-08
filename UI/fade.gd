@@ -1,12 +1,14 @@
 extends Control
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready():
-	hide()
+	visible = false
 
-func _on_return_btn_pressed() -> void:
+func fade_to_black():
+	animation_player.play('FadeToBlack')
+
+func on_fade_finish():
 	var main = get_tree().get_first_node_in_group('main')
-	main.restart_game()
+	main.fade_finish()
 
-func play_end():
-	animation_player.play('Fin')

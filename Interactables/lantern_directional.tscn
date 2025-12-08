@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://cdxmt6ufm6q5g"]
+[gd_scene load_steps=13 format=4 uid="uid://cdxmt6ufm6q5g"]
 
+[ext_resource type="AudioStream" uid="uid://bxuo47lsnuhfo" path="res://Audio/lamp broken.mp3" id="2_m603w"]
 [ext_resource type="Script" uid="uid://bxdugkj2jgs7d" path="res://Interactables/lantern_directional.gd" id="2_qk80w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5sa3"]
@@ -193,6 +194,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0045166016, 0.30230713, 0.0
 shape = SubResource("BoxShape3D_m603w")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_m603w")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -34,6 +34,11 @@ enemy=""
 interactable=""
 level=""
 player_start=""
+siphon=""
+souljar=""
+tome=""
+escape=""
+fade=""
 
 [input]
 

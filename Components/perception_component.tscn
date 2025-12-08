@@ -7,7 +7,7 @@ script = ExtResource("1_je8bo")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-target_position = Vector3(0, -100, 0)
+target_position = Vector3(0, -25, 0)
 
 [node name="SuspicionTimer" type="Timer" parent="."]
 wait_time = 3.0

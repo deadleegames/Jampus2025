@@ -4,5 +4,5 @@ class_name PickUp
 
 func interact():
 	super.interact()
-	GameState.add_key_item()
+	GameState.add_key_item(self)
 	queue_free()

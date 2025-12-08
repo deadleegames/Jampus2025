@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bis7v4b4onnjq"]
+[gd_scene load_steps=13 format=3 uid="uid://bis7v4b4onnjq"]
 
 [ext_resource type="Script" uid="uid://cjdwi12unhhu6" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://da455na6f2i5w" path="res://UI/main_menu.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://5na4gssrcnvn" path="res://Scripts/menus.gd" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://b30qj3tfsgnwv" path="res://UI/fade.tscn" id="4_dg77c"]
 [ext_resource type="PackedScene" uid="uid://bwg6odu23tffb" path="res://UI/player_hud.tscn" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://dl0ce770slnd3" path="res://UI/game_over.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dmhvdoi22vmd8" path="res://UI/game_win.tscn" id="6_7mycd"]
@@ -23,6 +24,9 @@ script = ExtResource("3_1bvp3")
 [node name="MainMenu" parent="Menus" instance=ExtResource("2_0xm2m")]
 process_mode = 3
 
+[node name="Fade" parent="Menus" groups=["fade"] instance=ExtResource("4_dg77c")]
+process_mode = 3
+
 [node name="PlayerHud" parent="Menus" instance=ExtResource("5_272bh")]
 process_mode = 3
 visible = false
@@ -31,15 +35,9 @@ mouse_filter = 1
 [node name="GameOver" parent="Menus" instance=ExtResource("5_lquwl")]
 process_mode = 3
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="GameWin" parent="Menus" instance=ExtResource("6_7mycd")]
 process_mode = 3
-visible = false
 
 [node name="SettingsMenu" parent="Menus" instance=ExtResource("8_4c57u")]
 process_mode = 3
@@ -65,4 +63,7 @@ bus = &"Music"
 [node name="SpookyHouse" parent="." groups=["level"] instance=ExtResource("11_efxa6")]
 process_mode = 1
 
+[node name="TeleportPlayer" type="Timer" parent="."]
+
 [connection signal="visibility_changed" from="Menus/PauseMenu" to="." method="_on_pause_menu_visibility_changed"]
+[connection signal="timeout" from="TeleportPlayer" to="." method="_on_teleport_player_timeout"]

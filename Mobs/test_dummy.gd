@@ -67,7 +67,7 @@ func do_chase(delta: float):
 	calculate_lookat(playerRef.global_position, delta)
 
 func do_patrol(delta: float):
-	if PatrolPoints.size() > 0 && $PatrolTimer.is_stopped():
+	if PatrolPoints.size() > 1 && $PatrolTimer.is_stopped():
 		try_set_patrol_point()
 		if	CurrentPatrolPoint != null:	
 			var desiredLoc = CurrentPatrolPoint.global_position

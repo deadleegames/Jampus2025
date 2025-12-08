@@ -1,26 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx0xogjeaiyft"]
+[gd_scene load_steps=4 format=3 uid="uid://dx0xogjeaiyft"]
 
 [ext_resource type="Script" uid="uid://b0lfbkfokad7j" path="res://Interactables/grapple_point.gd" id="1_58oxa"]
+[ext_resource type="PackedScene" uid="uid://jjxkwvk5lge4" path="res://Objects/grapple_mesh.tscn" id="2_5wme7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5ctw"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58oxa"]
-albedo_color = Color(0.75165963, 0.0012779677, 0.86887294, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b5ctw"]
-material = SubResource("StandardMaterial3D_58oxa")
+size = Vector3(0.80200195, 0.5994568, 0.6208496)
 
 [node name="GrapplePoint" type="StaticBody3D"]
 script = ExtResource("1_58oxa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5122838, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013793945, 0.6390996, 0.020141602)
 shape = SubResource("BoxShape3D_b5ctw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5122838, 0)
-mesh = SubResource("BoxMesh_b5ctw")
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4050697, 0)
-text = "Press F"
+[node name="GrapplePointMesh" parent="." instance=ExtResource("2_5wme7")]
+transform = Transform3D(0.7, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)

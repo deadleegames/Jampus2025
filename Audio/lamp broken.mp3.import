@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxuo47lsnuhfo"
+path="res://.godot/imported/lamp broken.mp3-07a307cfe01999c8caff1c535292d02d.mp3str"
+
+[deps]
+
+source_file="res://Audio/lamp broken.mp3"
+dest_files=["res://.godot/imported/lamp broken.mp3-07a307cfe01999c8caff1c535292d02d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

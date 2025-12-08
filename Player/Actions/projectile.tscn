@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://icgy1pjwxm0k" path="res://Player/Actions/projectile.gd" id="1_ab4ny"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ab4ny"]
+radius = 1.1660156
+height = 3.8322754
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ab4ny"]
 albedo_color = Color(1, 0.28184408, 0.48546845, 1)
@@ -18,7 +20,7 @@ gravity_scale = 0.0
 script = ExtResource("1_ab4ny")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.9106854e-16, -4.371139e-09, 0.1, -0.1, -4.371139e-09, 0, 4.371139e-09, -0.1, -4.371139e-09, 0, 0, 0)
+transform = Transform3D(1.9106854e-16, -4.371139e-09, 0.1, -0.1, -4.371139e-09, 0, 4.371139e-09, -0.1, -4.371139e-09, -4.2526827e-10, -4.2526827e-10, -0.009729005)
 shape = SubResource("CapsuleShape3D_ab4ny")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

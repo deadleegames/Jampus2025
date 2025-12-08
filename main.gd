@@ -10,11 +10,20 @@ var is_on_main_menu : bool = true
 @onready var player_hud: Control = $Menus/PlayerHud
 @onready var settings_menu_ui: Control = $Menus/SettingsMenu
 @onready var pause_menu_ui: Control = $Menus/PauseMenu
+@onready var fade: Control = $Menus/Fade
+
+@onready var teleport_player: Timer = $TeleportPlayer
 
 @onready var music_player: AudioStreamPlayer = $AudioMaster/MusicPlayer
 @onready var menu_music: AudioStreamPlayer = $AudioMaster/MenuMusic
 
+var bis_gameover = false
+
 func game_over():
+	var p = get_tree().get_first_node_in_group('player') as Player
+	p.currentState = MyEnums.PlayerState.DEFAULT
+	bis_gameover = true
+	get_tree().paused = true
 	hide_all()
 	game_over_ui.visible = true
 	CheckMenu.change_menu_context(true)
@@ -27,10 +36,16 @@ func game_over():
 
 func game_win():
 	hide_all()
-	game_win_ui.visible = true
+	var playback = menu_music.get_stream_playback()
+	playback.switch_to_clip_by_name("Default")
+	game_win_ui.play_end()
 	CheckMenu.change_menu_context(true)
 
 func restart_game():
+	fade.fade_to_black()
+	var p = get_tree().get_first_node_in_group('player') as Player
+	p.currentState = MyEnums.PlayerState.DEFAULT
+	bis_gameover = false
 	hide_all()
 	GameState.reset()
 	player_hud.reset()
@@ -39,15 +54,15 @@ func restart_game():
 	is_on_main_menu = true
 
 func main_menu():
-	hide_all()
-	main_menu_ui.visible = true
-	CheckMenu.change_menu_context(true)
-	is_on_main_menu = true
+	restart_game()
 
 func settings():
 	hide_all()
 	settings_menu_ui.visible = true
 	CheckMenu.change_menu_context(true)
+
+func update_checklist(tag: String):
+	player_hud.update_checklist(tag)
 
 func pause():	
 	if not is_on_main_menu:
@@ -60,17 +75,32 @@ func play_dialog():
 
 func skip_dialouge():
 	player_hud.stop_dialog()
+	dialog_finish()
 	player_hud.show_objective()
 
+func dialog_finish():
+	fade.fade_to_black()
+	var player = get_tree().get_first_node_in_group('player')
+	player.bprocess_input = false
+
+	teleport_player.start()
+
 func start_game():
+	var player = get_tree().get_first_node_in_group('player')
+	player.bprocess_input = false
+
+	fade.fade_to_black()
 	var playback = menu_music.get_stream_playback()
 	playback.switch_to_clip_by_name("End")
-	var player = get_tree().get_first_node_in_group('player')
-	player.hand_puppet.animation_player.play('Tool_Deploy')
+	
 	hide_all()
-	CheckMenu.change_menu_context(false)
-	player_hud.visible = true
+	CheckMenu.change_menu_context(false)	
 	is_on_main_menu = false
+
+func fade_finish():
+	var player = get_tree().get_first_node_in_group('player')
+	player.bprocess_input = true
+	player_hud.visible = true
 
 func hide_all():
 	main_menu_ui.hide()
@@ -83,7 +113,7 @@ func hide_all():
 func _process(_delta):
 	var p = get_tree().get_first_node_in_group('player') as Player
 	
-	if p.currentState == MyEnums.PlayerState.IN_CHASE:
+	if p.currentState == MyEnums.PlayerState.IN_CHASE and !bis_gameover:
 		if !music_player.playing:
 			music_player.play()
 
@@ -137,3 +167,10 @@ func _on_dialog_player_finished() -> void:
 	# var player_start = get_tree().get_first_node_in_group('player_start')
 	# player.global_posistion = player_start.global_posistion
 	pass
+
+
+func _on_teleport_player_timeout() -> void:
+	teleport_player.stop()
+	var player = get_tree().get_first_node_in_group('player')
+	var player_start = get_tree().get_first_node_in_group('player_start')
+	player.global_transform  = player_start.transform
