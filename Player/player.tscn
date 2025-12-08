@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://u5viqeomp0x6"]
 
 [ext_resource type="Script" uid="uid://xvl0nljpwpqt" path="res://Player/player.gd" id="1_l8h54"]
-[ext_resource type="PackedScene" uid="uid://dhsk53tfwlber" path="res://Player/hand_puppet_test.tscn" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://deb6snpm1tjak" path="res://Player/hand_puppet_updated.tscn" id="3_00tjw"]
 [ext_resource type="Script" uid="uid://dovjmsjhauevk" path="res://Components/action_component.gd" id="3_gwnis"]
 [ext_resource type="PackedScene" uid="uid://dp6fo60a8ex5l" path="res://Player/Actions/projectile_attack.tscn" id="4_k53q1"]
 [ext_resource type="PackedScene" uid="uid://bxys16a0iwwe8" path="res://Player/Actions/grapple.tscn" id="5_k53q1"]
@@ -46,18 +46,20 @@ target_position = Vector3(0, -2, 0)
 collide_with_areas = true
 debug_shape_thickness = 5
 
-[node name="Hand_Puppet" parent="Body/Head" instance=ExtResource("2_4ntmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06619966, -0.97702074)
+[node name="Hand_Puppet" parent="Body/Head" instance=ExtResource("3_00tjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23730254, -0.97702074)
 visible = false
 
 [node name="GrappleSpawn" type="Marker3D" parent="Body/Head/Hand_Puppet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, 0, -1.2785587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65224147, -0.06619966, -2.2555795)
 
 [node name="ProjectileSpawnMarker" type="Marker3D" parent="Body/Head/Hand_Puppet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4931202, 0, -1.2785587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4931202, -0.06619966, -2.2555795)
 
 [node name="SimpleRope" parent="Body/Head/Hand_Puppet" instance=ExtResource("6_fhl08")]
+transform = Transform3D(0.01, 0, 0, 0, 1, 0, 0, -3.5527137e-15, 0.01, 0, -0.06619966, -0.97702074)
 visible = false
+skeleton = NodePath("")
 
 [node name="ActionComponent" type="Node" parent="."]
 script = ExtResource("3_gwnis")

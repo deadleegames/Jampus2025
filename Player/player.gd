@@ -17,24 +17,32 @@ const JUMP_VELOCITY = 4.5
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var bprocess_input = true
+var waitCheckAnimationFinished = false
 
 func _ready():
 	hand_puppet.yank_player.connect(on_animation_grapple_finished)
 
 func on_animation_grapple_finished():
+	print("Grapple anim finished, signal heard")
 	action_component.start_action_by_name("Grapple_Action")
 	bprocess_input = true
 
 func _process(_delta: float) -> void:
 	if bprocess_input:
+		waitCheckAnimationFinished = true
 		if Input.is_action_just_pressed("Shoot"):		
 			action_component.start_action_by_name("Projectile_Attack_Action")
+			
 		if Input.is_action_just_pressed("Grapple"):
 			hand_puppet.animation_player.play('Tool_Yank')
 			audio_stream_player.play()
 			bprocess_input = false
 		if Input.is_action_just_pressed("Interact"):
 			action_component.start_action_by_name("Interact_Action")
+
+	if waitCheckAnimationFinished and not hand_puppet.animation_player.is_playing(): #If anim is done, and state machine is waiting to reset...
+		hand_puppet.animation_player.play("Idle")
+		waitCheckAnimationFinished = false
 		
 
 func _physics_process(delta):
