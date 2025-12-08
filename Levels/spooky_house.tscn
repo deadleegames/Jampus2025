@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://q3c281rkgxp8"]
+[gd_scene load_steps=29 format=3 uid="uid://q3c281rkgxp8"]
 
+[ext_resource type="Material" uid="uid://dvqfaymvknra8" path="res://Default_Building_Matl.tres" id="1_ex4vp"]
 [ext_resource type="Material" uid="uid://b6qmjmj78c5dy" path="res://Models/ModelTextures/PavingStones115b/Stones.tres" id="1_hq2al"]
 [ext_resource type="PackedScene" uid="uid://bqpxix1bulvpn" path="res://Models/LevelGeo/Mansion_Fascia.blend" id="2_6bgwg"]
 [ext_resource type="PackedScene" uid="uid://u5viqeomp0x6" path="res://Player/player.tscn" id="3_g4t3k"]
@@ -20,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://beljv40jfakv5" path="res://Interactables/escape_trigger.tscn" id="18_7uxqv"]
 [ext_resource type="PackedScene" uid="uid://cvlftbqgfoxll" path="res://Objects/tree_decorated.tscn" id="19_a4g50"]
 [ext_resource type="PackedScene" uid="uid://k02avwjhdmig" path="res://Objects/foyer_stairs.tscn" id="21_ex4vp"]
+[ext_resource type="PackedScene" uid="uid://yo627qtvtoqc" path="res://Models/LevelGeo/Stairs_Straight.glb" id="22_vrtjd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0l0h"]
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,6 +37,9 @@ tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.29480127, 0.42817196, 0.25400463, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrtjd"]
+albedo_color = Color(0.35230318, 0.20864683, 0.16100067, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hq2al"]
 albedo_color = Color(0.20843038, 0.42323008, 0.23011476, 1)
@@ -55,6 +60,7 @@ use_collision = true
 [node name="Box_Firstfloor_Front" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000038, 2, 0.10000038)
 size = Vector3(16.2, 5, 50)
+material = SubResource("StandardMaterial3D_vrtjd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/Box_Firstfloor_Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.925802, 1.5221114, 0)
@@ -134,16 +140,19 @@ size = Vector3(1, 3, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099999905, 2.25, 0.09999943)
 operation = 2
 size = Vector3(15.8, 4.5, 19.800001)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Firstfloor14" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099999905, -2.75, 0.09999943)
 operation = 2
 size = Vector3(15.8, 4.5, 19.800001)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Firstfloor3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4358885, 2.25, -17.345936)
 operation = 2
 size = Vector3(22.471777, 4.5, 14.215919)
+material = ExtResource("1_ex4vp")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CSGCombiner3D/Cut_Firstfloor3"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.2264633, 1.5966551, 0)
@@ -161,6 +170,7 @@ spot_angle = 67.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4358885, -2.75, -17.345936)
 operation = 2
 size = Vector3(22.471777, 4.5, 14.215919)
+material = ExtResource("1_ex4vp")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CSGCombiner3D/Cut_Firstfloor13"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.2264633, 1.5966551, 0)
@@ -190,16 +200,19 @@ omni_attenuation = 2.856
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5543456, -2.75, 17.619724)
 operation = 2
 size = Vector3(6.4913087, 4.5, 14.3842535)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_1F_Coatroom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5543456, 2.25, 17.619724)
 operation = 2
 size = Vector3(6.4913087, 4.5, 14.3842535)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Firstfloor4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.07406, 2.25, 0.09999943)
 operation = 2
 size = Vector3(15.8, 4.5, 19.800001)
+material = ExtResource("1_ex4vp")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/Cut_Firstfloor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3769827, 0, -8.137969)
@@ -217,11 +230,13 @@ omni_attenuation = 2.856
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.47184, 2.25, -17.345936)
 operation = 2
 size = Vector3(9.004443, 4.5, 14.215919)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Firstfloor6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.004749, 2.25, 17.619724)
 operation = 2
 size = Vector3(23.49712, 4.5, 14.3842535)
+material = ExtResource("1_ex4vp")
 
 [node name="OmniLight3D" type="SpotLight3D" parent="CSGCombiner3D/Cut_Firstfloor6"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.290946, 1, 0)
@@ -239,6 +254,7 @@ spot_angle = 71.21
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.004749, -2.75, 17.619724)
 operation = 2
 size = Vector3(23.49712, 4.5, 14.3842535)
+material = ExtResource("1_ex4vp")
 
 [node name="OmniLight3D" type="SpotLight3D" parent="CSGCombiner3D/Cut_Firstfloor15"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.290946, 1, 0)
@@ -256,17 +272,20 @@ spot_angle = 71.21
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9, -0.5, 0)
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
 depth = 5.0
+material = ExtResource("1_ex4vp")
 
 [node name="Poly_Basement_Rear" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9, -5.5, 0)
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
 depth = 5.0
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_1F_Ballroom" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.9, 0, 0)
 operation = 2
 polygon = PackedVector2Array(8.228909, -24.698772, 8.2591305, 24.777733, 15.959835, 24.754326, 24.774546, 15.864185, 24.71797, -15.90199, 15.906208, -24.628553)
 depth = 5.0
+material = ExtResource("1_ex4vp")
 
 [node name="Box_2F_Front" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000038, 6.9937096, 0.10000038)
@@ -289,68 +308,119 @@ size = Vector3(16.2, 5, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.678, 6.289066, -14.423218)
 operation = 2
 size = Vector3(1, 2.5551758, 3.0820313)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_FrontDoor3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.678, 6.289, 14.423)
 operation = 2
 size = Vector3(1, 2.5551758, 3.0820313)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Door" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.296061, 6.4937096, -5.244817)
 operation = 2
 size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_Door6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.9676895, 6.4937096, -9.877304)
+operation = 2
+size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Door2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.296061, 6.4937096, 4.876442)
 operation = 2
 size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_2F_Foyer" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099999905, 6.8352623, 0.09999943)
 operation = 2
 size = Vector3(15.8, 5.3168945, 19.800001)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_2F_WestRoom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4358885, 7.2437096, -17.345936)
 operation = 2
 size = Vector3(22.471777, 4.5, 14.215919)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_2F_WestRoom2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4358885, 12.090633, -17.345936)
+operation = 2
+size = Vector3(22.471777, 4.1938477, 14.215919)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_2F_Eastroom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5543456, 7.2437096, 17.619724)
 operation = 2
 size = Vector3(6.4913087, 4.5, 14.3842535)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_2F_CoreRoom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.07406, 7.2437096, 0.09999943)
 operation = 2
 size = Vector3(15.8, 4.5, 19.800001)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_2F_MidWestRoom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.47184, 7.2437096, -17.345936)
 operation = 2
 size = Vector3(9.004443, 4.5, 14.215919)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_2F_MidWestRoom3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.562305, 7.817501, -23.214857)
+operation = 2
+size = Vector3(6.8235106, 5.647583, 2.4780765)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_2F_MidWestRoom2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.47184, 12.157528, -17.345936)
+operation = 2
+size = Vector3(9.004443, 4.3276367, 14.215919)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_2F_MidEastRoom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.004749, 7.2437096, 17.619724)
 operation = 2
 size = Vector3(23.49712, 4.5, 14.3842535)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_2F_MidEastRoom2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.004749, 12.156368, 17.619724)
+operation = 2
+size = Vector3(23.49712, 4.3253174, 14.3842535)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_2F_MidEastRoom3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.102417, 12.102596, 0.12914848)
+operation = 2
+size = Vector3(13.301783, 4.2177734, 20.24664)
+material = ExtResource("1_ex4vp")
 
 [node name="Poly_2F_Ballroom" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9, 4.4937096, 0)
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
 depth = 5.0
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Firstfloor16" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.07406, 7.25, 0.09999943)
 operation = 2
 size = Vector3(15.8, 4.5, 19.800001)
+material = ExtResource("1_ex4vp")
 
-[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGCombiner3D"]
+[node name="SpotLight3D" type="SpotLight3D" parent="CSGCombiner3D/Cut_Firstfloor16"]
+transform = Transform3D(1, 0, 0, 0, -0.23412412, 0.9722067, 0, -0.9722067, -0.23412412, -0.96351624, 0, 0)
+light_color = Color(0.7490196, 0.9843137, 0, 1)
 
 [node name="Poly_3F_OverBallRoom" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 15.9, 9.49371, 0)
 polygon = PackedVector2Array(8, -25, 8, 25, 16, 25, 25, 16, 25, -16, 16, -25)
 depth = 5.0
+material = ExtResource("1_ex4vp")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/Poly_3F_OverBallRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.390558, 1.3715993e-07, 3.1378536)
@@ -362,26 +432,49 @@ omni_range = 23.108
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.9, 4.9937096, 0)
 operation = 2
 polygon = PackedVector2Array(8.228909, -24.698772, 8.2591305, 24.777733, 15.959835, 24.754326, 24.774546, 15.864185, 24.71797, -15.90199, 15.906208, -24.628553)
-depth = 5.0
+depth = 4.5
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_1f2F_Ballroom" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.806324, 4.425496, 0.09999943)
 operation = 2
 size = Vector3(13.588476, 4.5, 19.800001)
+material = ExtResource("1_ex4vp")
 
 [node name="Cut_Door3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.875982, 6.5, 17.167683)
 operation = 2
 size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
 
-[node name="Cut_Door4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.781213, 6.5, -17.315506)
+[node name="Cut_Door7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.750263, 11.5, 10.225063)
 operation = 2
 size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_Door8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20.280949, 11.5, -10.170212)
+operation = 2
+size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_Door9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7888565, 11.5, -16.298464)
+operation = 2
+size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
+
+[node name="Cut_Door5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98712826, 6.5, 17.167683)
+operation = 2
+size = Vector3(1, 3, 2)
+material = ExtResource("1_ex4vp")
 
 [node name="Walkway_Foyer" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.959385, 4.6513095, 0.083156586)
 size = Vector3(4.101074, 0.6856079, 19.924438)
+material = ExtResource("1_ex4vp")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CSGCombiner3D/Walkway_Foyer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.79999995, -5.111366)
@@ -405,7 +498,7 @@ light_color = Color(0.88235295, 1, 1, 1)
 omni_range = 11.521858
 
 [node name="Mansion_Fascia" parent="." instance=ExtResource("2_6bgwg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.031555, 7.5, -0.029267073)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.023573, 7.5, 0.009928942)
 
 [node name="Player" parent="." instance=ExtResource("3_g4t3k")]
 transform = Transform3D(0.16804203, 0, -0.9857798, 0, 1, 0, 0.9857798, 0, 0.16804203, -176.54996, -0.06333208, -312.1623)
@@ -508,7 +601,7 @@ transform = Transform3D(-4.371138e-08, 0, -1, 0.5904789, 0.8070531, -2.5810653e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6245997, 4.9937096, 17.080877)
 
 [node name="GrapplePoint" parent="." instance=ExtResource("6_3wlf8")]
-transform = Transform3D(2.9802322e-08, 0, 1, -8.742278e-08, -1, 2.6054018e-15, 1, -8.742278e-08, -2.9802322e-08, 25.380096, 9.990251, 1.3094578)
+transform = Transform3D(2.9802322e-08, 0, 1, -8.742278e-08, -1, 2.6054018e-15, 1, -8.742278e-08, -2.9802322e-08, 25.380096, 9.508723, 1.3094578)
 
 [node name="Outside" type="Node" parent="."]
 
@@ -1330,5 +1423,8 @@ transform = Transform3D(0.8365902, 0, 1.8166224, 0, 2, 0, -1.8166224, 0, 0.83659
 
 [node name="FoyerStairs2" parent="." instance=ExtResource("21_ex4vp")]
 transform = Transform3D(-0.99644303, 0, -0.08426928, 0, 1, 0, 0.08426928, 0, -0.99644303, 0.16167378, 0, 2.8624291)
+
+[node name="Stairs_Straight2" parent="." instance=ExtResource("22_vrtjd")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.595822, 4.993995, -21.332876)
 
 [editable path="StartArea/EscapeTrigger"]
