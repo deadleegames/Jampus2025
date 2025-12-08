@@ -23,6 +23,7 @@ func _ready():
 	hand_puppet.yank_player.connect(on_animation_grapple_finished)
 
 func on_animation_grapple_finished():
+	print("Grapple anim finished, signal heard")
 	action_component.start_action_by_name("Grapple_Action")
 	bprocess_input = true
 
