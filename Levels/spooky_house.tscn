@@ -49,7 +49,7 @@ uv1_scale = Vector3(100, 100, 100)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bgwg"]
 albedo_texture = ExtResource("8_m30un")
 
-[node name="SpookyHouse" type="Node3D"]
+[node name="SpookyHouse" type="Node3D" groups=["level"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_oe4ec")
@@ -498,7 +498,7 @@ light_color = Color(0.88235295, 1, 1, 1)
 omni_range = 11.521858
 
 [node name="Mansion_Fascia" parent="." instance=ExtResource("2_6bgwg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.023573, 7.5, 0.009928942)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.016508, 7.518404, 0.015109301)
 
 [node name="Player" parent="." instance=ExtResource("3_g4t3k")]
 transform = Transform3D(0.16804203, 0, -0.9857798, 0, 1, 0, 0.9857798, 0, 0.16804203, -176.54996, -0.06333208, -312.1623)
@@ -650,7 +650,7 @@ rings = 10
 material = SubResource("StandardMaterial3D_hq2al")
 
 [node name="CSGSphere3D5" type="CSGSphere3D" parent="Outside/CSGCombiner3D"]
-transform = Transform3D(1.535, 0, 0, 0, 1, 0, 0, 0, 2.175, -13.459951, -29.556622, -1.2294941)
+transform = Transform3D(1.535, 0, 0, 0, 1, 0, 0, 0, 2.175, -13.459951, -29.488771, -1.2294941)
 use_collision = true
 radius = 29.040089
 radial_segments = 30
@@ -668,6 +668,10 @@ material = SubResource("StandardMaterial3D_hq2al")
 
 [node name="GrappleTreeDead" parent="Outside/CSGCombiner3D" instance=ExtResource("7_5nl0r")]
 transform = Transform3D(0.25426772, 0, -1.9837712, 0, 2, 0, 1.9837712, 0, 0.25426772, -82.97508, -3.063746, 49.442078)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Outside/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.001978, -1.678133, 0.55085754)
+size = Vector3(4.813141, 2.7867432, 33.37857)
 
 [node name="Fence" type="Node" parent="Outside"]
 
@@ -1405,7 +1409,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.303075, 1.2083439, 0.67469
 finish_marker = NodePath("../FinishMarker")
 
 [node name="CollisionShape3D" parent="StartArea/EscapeTrigger" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34865475, 0.6838379, -0.9690416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0847559, 2.8769836, -1.2305775)
 
 [node name="PlayerStart" type="Marker3D" parent="." groups=["player_start"]]
 transform = Transform3D(0.9484952, 0, 0.31679153, 0, 1, 0, -0.31679153, 0, 0.9484952, -97.4931, -2.3535638, 60.976368)
@@ -1426,5 +1430,11 @@ transform = Transform3D(-0.99644303, 0, -0.08426928, 0, 1, 0, 0.08426928, 0, -0.
 
 [node name="Stairs_Straight2" parent="." instance=ExtResource("22_vrtjd")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.595822, 4.993995, -21.332876)
+
+[node name="GrapplePoint2" parent="." instance=ExtResource("6_3wlf8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11.107929, 4.9879627, -6.6291695)
+
+[node name="GrapplePoint3" parent="." instance=ExtResource("6_3wlf8")]
+transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, -10.821432, 4.9879622, 6.1943436)
 
 [editable path="StartArea/EscapeTrigger"]

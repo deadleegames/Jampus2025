@@ -12,3 +12,10 @@ func lose_hover():
 
 func interact():
 	pass
+
+static func reset_hover():
+	var main_loop = Engine.get_main_loop()
+	if main_loop is SceneTree:
+		main_loop.get_first_node_in_group('main').player_hud.set_interact_text('')
+	return null
+	

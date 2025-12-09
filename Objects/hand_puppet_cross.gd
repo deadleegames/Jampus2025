@@ -3,11 +3,13 @@ extends Interactable
 signal cross_obtained()
 
 @onready var timer: Timer = $Timer
+@onready var pickup: AudioStreamPlayer3D = $Pickup
 
 func interact():
 	var player = get_tree().get_first_node_in_group('player')
 	player.hand_puppet.visible = true
 	player.hand_puppet.animation_player.play('Tool_Deploy')
+	pickup.play()
 	cross_obtained.emit()
 	timer.start()
 	self.visible = false

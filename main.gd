@@ -91,7 +91,7 @@ func start_game():
 
 	fade.fade_to_black()
 	var playback = menu_music.get_stream_playback()
-	playback.switch_to_clip_by_name("End")
+	playback.switch_to_clip_by_name("Ambience")
 	
 	hide_all()
 	CheckMenu.change_menu_context(false)	

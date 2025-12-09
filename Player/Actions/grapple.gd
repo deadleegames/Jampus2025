@@ -4,7 +4,7 @@ const SPEED : float = 100.0
 
 @export var ray: RayCast3D
 @export var player: CharacterBody3D
-@export var rope: MeshInstance3D
+#@export var rope: MeshInstance3D
 
 var grapple_point: GrapplePoint
 

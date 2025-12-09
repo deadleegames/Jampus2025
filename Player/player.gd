@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		
 
 func _physics_process(delta):
-	rope.visible = bis_grappling
+	#rope.visible = bis_grappling
 	if bis_grappling:
 		velocity = Vector3.ZERO
 		var distance_vec = global_position - grapple_pos

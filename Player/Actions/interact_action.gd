@@ -31,10 +31,8 @@ func try_hover_interact():
 		if interactable:
 			interactable.hover_interact()
 			previous_hover = interactable
+			#print('grapple')
 			return
-		elif previous_hover:
-			previous_hover.lose_hover()
-			previous_hover = null
 
 
 	if interact_ray.is_colliding():
@@ -42,10 +40,13 @@ func try_hover_interact():
 		if interactable:
 			interactable.hover_interact()
 			previous_hover = interactable
+			#print('interact')
 		elif previous_hover:
-			previous_hover.lose_hover()
-			previous_hover = null
-	elif previous_hover:
-		previous_hover.lose_hover()
-		previous_hover = null
+				previous_hover.lose_hover()
+				previous_hover = null
+				print('previous')
+
+	else:
+		Interactable.reset_hover()
 	
+		

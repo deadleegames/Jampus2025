@@ -1,5 +1,7 @@
 extends Node
 
+signal on_all_items()
+
 var KeyItemsCollected : int = 0
 var TotalLevelKeyItems: int = 3
 
@@ -31,6 +33,7 @@ func check_win_condition():
 		# main.game_win()
 		var escape_trigger = get_tree().get_first_node_in_group('escape')
 		escape_trigger.enable()
+		on_all_items.emit()
 
 func has_all_items() -> bool:
 	return KeyItemsCollected == TotalLevelKeyItems

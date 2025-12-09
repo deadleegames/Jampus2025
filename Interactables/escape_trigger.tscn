@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d3d7qd1xyl7mq" path="res://Interactables/escape_trigger.gd" id="1_kb7uk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bgn06"]
-size = Vector3(1.807373, 2.3676758, 6.000717)
+size = Vector3(1.807373, 8.618591, 34.494076)
 
 [node name="EscapeTrigger" type="Area3D" groups=["escape"]]
 script = ExtResource("1_kb7uk")

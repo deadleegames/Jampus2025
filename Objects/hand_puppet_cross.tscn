@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://cnfpkhlxibsek"]
+[gd_scene load_steps=9 format=4 uid="uid://cnfpkhlxibsek"]
 
 [ext_resource type="Script" uid="uid://dj5oilqdljdvo" path="res://Objects/hand_puppet_cross.gd" id="1_b4pyh"]
+[ext_resource type="AudioStream" uid="uid://c1djbs6xgrb1h" path="res://Audio/Animation Extract i guess.mp3" id="2_p7yc4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsidp"]
 resource_name = "Brass"
@@ -250,5 +251,8 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_b4pyh")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Pickup" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_p7yc4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

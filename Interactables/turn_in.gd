@@ -6,8 +6,13 @@ var bcan_interact = false
 @onready var spot_light_3d: SpotLight3D = $SpotLight3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@onready var cube: MeshInstance3D = $Cube
+@onready var paper: Node3D = $Paper
+
+
 func _ready():
 	puppet_cross.cross_obtained.connect(on_obtained)
+	GameState.on_all_items.connect(on_all_items)
 
 func interact():
 	if !bcan_interact:
@@ -16,10 +21,12 @@ func interact():
 	super.interact()
 	if GameState.has_all_items():
 		animation_player.play('Victory')
+		bcan_interact = false
 		return
 
 	var main = get_tree().get_first_node_in_group('main')
 	main.play_dialog()
+	bcan_interact = false
 
 func hover_interact():
 	if !bcan_interact:
@@ -34,3 +41,8 @@ func on_obtained():
 func on_victory_finished():
 	var main = get_tree().get_first_node_in_group('main')
 	main.game_win()
+
+func on_all_items():
+	bcan_interact = true
+	cube.visible = true
+	paper.visible = false
